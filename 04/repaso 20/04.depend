@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1556137092 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\04\repaso 20\empleado.c
+	<stdio.h>
+	<string.h>
+	"Empleado.h"
+
+1555783928 c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\04\repaso 20\empleado.h
+
+1555855202 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\04\repaso 20\funciones.c
+	<string.h>
+	<stdio.h>
+
+1556137481 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\04\repaso 20\main.c
+	<stdio.h>
+	<stdlib.h>
+	<limits.h>
+	"Empleado.h"
+	<string.h>
+	"utn.h"
+
+1531419524 c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\04\repaso 20\utn.h
+
+1556121998 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\04\repaso 20\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
