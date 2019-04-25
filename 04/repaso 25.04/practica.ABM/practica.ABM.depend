@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1556225589 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\practica.abm\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+	"cliente.h"
+
+1556218984 c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\practica.abm\utn.h
+
+1556218691 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\practica.abm\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1556224854 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\practica.abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"cliente.h"
+
+1556225552 c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\practica.abm\cliente.h
+
