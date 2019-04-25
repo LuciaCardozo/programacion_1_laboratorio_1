@@ -12,9 +12,6 @@ int main()
     EEmpleado miListaDeEmpleado[CANTIDAD];
     EEmpleado_initArray(miListaDeEmpleado,CANTIDAD);
 
-    miListaDeEmpleado[0].isEmpty=1;
-    miListaDeEmpleado[1].isEmpty=1;
-    miListaDeEmpleado[2].isEmpty=1;
     for(int i=0;i<CANTIDAD;i++)
     {
         int lugarLibre=EEmpleado_lugarLibreArray(miListaDeEmpleado,CANTIDAD);
@@ -25,7 +22,7 @@ int main()
         }
         else
         {
-            printf("no hay lugar gil");
+            printf("no hay lugar");
         }
     }
     return 0;

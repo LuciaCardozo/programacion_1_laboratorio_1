@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1556153703 source:/home/alumno/Documentos/Clase10/practica_parcial/main.c
+	<stdio.h>
+	<stdlib.h>
+	"pantalla.h"
+	"utn.h"
+
+1556153121 /home/alumno/Documentos/Clase10/practica_parcial/pantalla.h
+
+1556154015 /home/alumno/Documentos/Clase10/practica_parcial/utn.h
+
+1556153121 source:/home/alumno/Documentos/Clase10/practica_parcial/pantalla.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+	"pantalla.h"
+
+1556154000 source:/home/alumno/Documentos/Clase10/practica_parcial/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
