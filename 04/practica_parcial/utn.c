@@ -6,29 +6,29 @@
 
 
 
-float utn_getFloat(char* mensaje)
+float utn_getFloat(char* msg)
 {
-    float auxiliar;
-    printf("%s",mensaje);
-    scanf("%f",&auxiliar);
-    return auxiliar;
+    float aux;
+    printf(msg);
+    scanf("%f",&aux);
+    return aux;
 }
 
-int utn_getInt(char* mensaje)
+int utn_getInt(char* msg)
 {
-    int auxiliar;
-    printf("%s",mensaje);
-    scanf("%d",&auxiliar);
-    return auxiliar;
+    int aux;
+    printf(msg);
+    scanf("%d",&aux);
+    return aux;
 }
 
-char utn_getChar(char* mensaje)
+char utn_getChar(char* msg)
 {
-    char auxiliar;
-    printf("%s",mensaje);
+    char aux;
+    printf("%s",msg);
     utn_clearStdin();
-    scanf("%c",&auxiliar);
-    return auxiliar;
+    scanf("%c",&aux);
+    return aux;
 }
 
 char utn_getNumeroAleatorio(int desde , int hasta, int iniciar)
@@ -106,8 +106,8 @@ int utn_esNombres(char* str)
 int utn_getValidLastName(char* lastName)
 {
     int retorno=-1;
-    char auxLastName[25];
-        if(!utn_getValidString("ingrese el LastName\n","ERROR, LastName no valido\n","ERROR, son demaciados caracteres para un LastName\n",auxLastName,25,2))
+    char auxLastName[500];
+        if(!utn_getValidString("ingrese apellido: ","ERROR, apellido no valido\n","ERROR, son demasiados caracteres para un apellido\n",auxLastName,500,2))
         {
 
             if(utn_esNombres(auxLastName)==1)
@@ -116,7 +116,7 @@ int utn_getValidLastName(char* lastName)
                 retorno= 0;
             }
             else
-            printf("El LastName solo puede contener letras\n");
+            printf("El apellido solo puede contener letras\n");
         }
 
     return retorno;
@@ -125,7 +125,7 @@ int utn_getValidName(char* name)
 {
     int retorno=-1;
     char auxName[500];
-        if(!utn_getValidString("ingrese el nombre: ","ERROR, Name no valido\n","ERROR, son demaciados caracteres para un Name\n",auxName,25,2))
+        if(!utn_getValidString("ingrese el nombre: ","ERROR, Name no valido\n","ERROR, son demasiados caracteres para un nombre\n",auxName,500,2))
         {
 
             if(utn_esNombres(auxName)==1)
@@ -134,7 +134,7 @@ int utn_getValidName(char* name)
                 retorno= 0;
             }
             else
-            printf("El name solo puede contener letras\n");
+            printf("El nombre solo puede contener letras\n");
         }
 
     return retorno;
@@ -412,21 +412,23 @@ void utn_clearScreen(void)
 
 void utn_menuDeOpciones(void)
 {
-   // int menu;
+  // int menu;
 
-       printf("1-Alta de pantalla \n");
+       printf("\n1-Alta de pantalla \n");
        printf("-------------------------------------------\n");
-       printf("2-Modificar datos de pantalla \n");
+       printf("2-Mostrar datos ingresados\n");
        printf("-------------------------------------------\n");
-       printf("3-Baja de pantalla\n");
+       printf("3-Modificar datos de pantalla\n");
        printf("-------------------------------------------\n");
-       printf("4-generar archivo de reparto\n");
+       printf("4-Baja de pantalla\n");
        printf("-------------------------------------------\n");
-       printf("5-salir\n");
+       printf("5-generar archivo de reparto\n");
+       printf("-------------------------------------------\n");
+       printf("6-salir\n");
        printf("-------------------------------------------\n");
 
-//utn_getValidInt("","",&menu,1,5,1);
-  // return menu;
+    //utn_getValidInt("\n5-SALIR.\n","la opcion no exite\n",&menu,1,5,1);
+   //return menu;
 
 }
 int utn_getStringAlfaNumerico(char mensaje[],char input[])
