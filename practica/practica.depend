@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1554401418 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\practica\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funcionesDePracticas.h"
+
+1554401348 c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\practica\funcionesdepracticas.h
+
+1554401622 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\practica\funcionesdepracticas.c
+	<stdio.h>
+

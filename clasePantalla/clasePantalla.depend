@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1556824621 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\clasepantalla\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pantalla.h"
+	"utn.h"
+
+1556825315 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\clasepantalla\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1556809472 c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\clasepantalla\utn.h
+
+1556826832 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\clasepantalla\pantalla.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pantalla.h"
+	"utn.h"
+
+1556822729 c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\clasepantalla\pantalla.h
+

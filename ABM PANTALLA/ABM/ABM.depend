@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1556827712 source:c:\users\lucia\desktop\abm pantalla\abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pantalla.h"
+	"utn.h"
+
+1556822729 c:\users\lucia\desktop\abm pantalla\abm\pantalla.h
+
+1556809472 c:\users\lucia\desktop\abm pantalla\abm\utn.h
+
+1556828140 source:c:\users\lucia\desktop\abm pantalla\abm\pantalla.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pantalla.h"
+	"utn.h"
+
+1556825315 source:c:\users\lucia\desktop\abm pantalla\abm\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
