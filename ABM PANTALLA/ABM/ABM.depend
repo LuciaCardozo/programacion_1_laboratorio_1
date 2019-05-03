@@ -24,6 +24,7 @@
 	<string.h>
 	"utn.h"
 
+<<<<<<< HEAD
 1556834674 source:/home/alumno/Documentos/lu/programacion_1_laboratorio_1/ABM PANTALLA/ABM/main.c
 	<stdio.h>
 	<stdlib.h>
@@ -49,3 +50,5 @@
 	<string.h>
 	"utn.h"
 
+=======
+>>>>>>> 463b014750cc2ac42752d0b40f96e91a3bb73c28

@@ -75,7 +75,11 @@ int pan_printPantalla(Pantalla* list,int limite)
     if(list != NULL && limite>0)
     {
 
+<<<<<<< HEAD
         for(i=0; i<limite; i++)//probar (i<limite-1) por lo que vi es valido
+=======
+        for(i=0; i<limite; i++)
+>>>>>>> 463b014750cc2ac42752d0b40f96e91a3bb73c28
         {
             if(list[i].isEmpty==OCUPADO)
             {
@@ -146,6 +150,7 @@ int pan_buscarEmpleadoPorId(Pantalla* list, int limite,int idE)
     }
     return retorno;
 }
+<<<<<<< HEAD
 
 int pan_modificarPantalla(Pantalla* list, int limite)
 {
@@ -208,3 +213,5 @@ int pan_orderID(Pantalla* list, int limite)
     }
     return 0;
 }
+=======
+>>>>>>> 463b014750cc2ac42752d0b40f96e91a3bb73c28

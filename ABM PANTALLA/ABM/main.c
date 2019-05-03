@@ -26,7 +26,11 @@ int main()
     listaDePantalla[2].tipo=1;
     listaDePantalla[2].idPantalla=generadorId();
     listaDePantalla[2].isEmpty=1;
+<<<<<<< HEAD
     strncpy(listaDePantalla[3].nombre,"jonathan",51);
+=======
+     strncpy(listaDePantalla[3].nombre,"jonathan",51);
+>>>>>>> 463b014750cc2ac42752d0b40f96e91a3bb73c28
     strncpy(listaDePantalla[3].direccion,"marco avellaneda",51);
     listaDePantalla[3].precio=55;
     listaDePantalla[3].tipo=1;
@@ -45,11 +49,17 @@ int main()
             case 2:
             pan_printPantalla(listaDePantalla,LEN_LIST);
             break;
+<<<<<<< HEAD
             case 3:
             pan_modificarPantalla(listaDePantalla,LEN_LIST);
             break;
             case 4:
             pan_bajaPantalla(listaDePantalla,LEN_LIST);
+=======
+            case 4:
+            pan_bajaPantalla(listaDePantalla,LEN_LIST);
+
+>>>>>>> 463b014750cc2ac42752d0b40f96e91a3bb73c28
             break;
         }
     }while(opciones!=5);
