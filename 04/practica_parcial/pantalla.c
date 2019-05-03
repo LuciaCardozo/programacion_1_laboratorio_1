@@ -64,9 +64,10 @@ int pan_alta(Pantalla *list, int limite)
 int verificarSiExisteElId(Pantalla * list,int id, int limite)
 {
     int retorno=-1;//si no existe
+    int i;
     if(list != NULL)
     {
-        for(int i=0;i<limite;i++)
+        for(i=0;i<limite;i++)
         {
            if(list[i].idPantalla == id)
            {

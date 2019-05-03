@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1555697884 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\04\prectica 19\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

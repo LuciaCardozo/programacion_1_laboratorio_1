@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1553968154 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\practica funciones con y sin parametros\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
+1553885055 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\practica funciones con y sin parametros\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1553885113 c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\practica funciones con y sin parametros\funciones.h
+

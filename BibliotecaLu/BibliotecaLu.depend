@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1553879047 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\bibliotecalu\main.c
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+
+1553879081 c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\bibliotecalu\utn.h
+
+1553879481 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\bibliotecalu\utn.c
+	<stdio.h>
+

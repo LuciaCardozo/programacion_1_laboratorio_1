@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1556827712 source:c:\users\lucia\desktop\abm pantalla\abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pantalla.h"
+	"utn.h"
+
+1556822729 c:\users\lucia\desktop\abm pantalla\abm\pantalla.h
+
+1556809472 c:\users\lucia\desktop\abm pantalla\abm\utn.h
+
+1556828140 source:c:\users\lucia\desktop\abm pantalla\abm\pantalla.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pantalla.h"
+	"utn.h"
+
+1556825315 source:c:\users\lucia\desktop\abm pantalla\abm\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1556834674 source:/home/alumno/Documentos/lu/programacion_1_laboratorio_1/ABM PANTALLA/ABM/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pantalla.h"
+	"utn.h"
+
+1556845369 /home/alumno/Documentos/lu/programacion_1_laboratorio_1/ABM PANTALLA/ABM/pantalla.h
+
+1556833347 /home/alumno/Documentos/lu/programacion_1_laboratorio_1/ABM PANTALLA/ABM/utn.h
+
+1556835514 source:/home/alumno/Documentos/lu/programacion_1_laboratorio_1/ABM PANTALLA/ABM/pantalla.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pantalla.h"
+	"utn.h"
+
+1556833347 source:/home/alumno/Documentos/lu/programacion_1_laboratorio_1/ABM PANTALLA/ABM/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
