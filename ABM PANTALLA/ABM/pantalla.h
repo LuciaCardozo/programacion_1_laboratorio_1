@@ -17,11 +17,10 @@ int pan_printPantalla(Pantalla* list,int limite);
 int pan_bajaPantalla(Pantalla* list,int limite);
 int pan_buscarEmpleadoPorId(Pantalla* list, int limite,int idE);
 int pan_obtenerListaFiltrada(Pantalla* list,Pantalla* auxList, int limite, char* nombre);
-<<<<<<< HEAD
+
 int pan_modificarPantalla(Pantalla* list, int limite);
 int pan_orderID(Pantalla* list, int limite);
-=======
->>>>>>> 463b014750cc2ac42752d0b40f96e91a3bb73c28
+
 
 
 

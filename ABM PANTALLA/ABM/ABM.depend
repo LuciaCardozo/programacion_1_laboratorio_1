@@ -24,7 +24,8 @@
 	<string.h>
 	"utn.h"
 
-<<<<<<< HEAD
+1556825315 D
+
 1556834674 source:/home/alumno/Documentos/lu/programacion_1_laboratorio_1/ABM PANTALLA/ABM/main.c
 	<stdio.h>
 	<stdlib.h>
@@ -50,5 +51,32 @@
 	<string.h>
 	"utn.h"
 
-=======
->>>>>>> 463b014750cc2ac42752d0b40f96e91a3bb73c28
+1556833347 
+
+1556833347 b014750cc2ac42752d0b40f96e91a3bb73c28
+
+1557344586 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\abm pantalla\abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pantalla.h"
+	"utn.h"
+
+1557340799 c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\abm pantalla\abm\pantalla.h
+
+1556809472 c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\abm pantalla\abm\utn.h
+
+1557345385 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\abm pantalla\abm\pantalla.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pantalla.h"
+	"utn.h"
+
+1556825315 source:c:\users\lucia\desktop\nueva carpeta\programacion_1_laboratorio_1\abm pantalla\abm\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+

@@ -75,12 +75,9 @@ int pan_printPantalla(Pantalla* list,int limite)
     if(list != NULL && limite>0)
     {
 
-<<<<<<< HEAD
-        for(i=0; i<limite; i++)//probar (i<limite-1) por lo que vi es valido
-=======
-        for(i=0; i<limite; i++)
->>>>>>> 463b014750cc2ac42752d0b40f96e91a3bb73c28
-        {
+
+        for(i=0; i<limite-1; i++)//probar (i<limite-1) por lo que vi es valido
+   {
             if(list[i].isEmpty==OCUPADO)
             {
                 if(list[i].tipo==1)
@@ -126,10 +123,10 @@ int pan_bajaPantalla(Pantalla* list, int limite)
     char auxName[51];
     int auxId;
     int indicePantallaABorrar;
-    utn_getValidString("Ingrese el nombre","Error","Error, excediste el maximo de caracteres",auxName,51,3);
+    utn_getValidString("\nIngrese el nombre: ","\nError","\nError, excediste el maximo de caracteres",auxName,51,3);
     obtenerListaFiltrada(list,auxList,limite,auxName);
-    pan_printPantalla(auxList,(limite-1));
-    if(utn_getValidInt("Ingrese el id: ","Error, repuesta incorrecta",&auxId,1,1001,3)==0)
+    pan_printPantalla(auxList,(limite));
+    if(utn_getValidInt("\nIngrese el id: ","\nError, repuesta incorrecta",&auxId,1,1001,3)==0)
         indicePantallaABorrar=pan_buscarEmpleadoPorId(list,limite,auxId);
 
     list[indicePantallaABorrar].isEmpty=LIBRE;
@@ -150,32 +147,42 @@ int pan_buscarEmpleadoPorId(Pantalla* list, int limite,int idE)
     }
     return retorno;
 }
-<<<<<<< HEAD
+
 
 int pan_modificarPantalla(Pantalla* list, int limite)
 {
     Pantalla auxList[limite];
-    int  retorno=-1;
+    int retorno=-1;
     char auxName[51];
     char nuevoNombre[51];
     char nuevaDireccion[51];
-    int  nuevotipo;
-    int  auxId;
-    int  indicePantallaAModificar;
-    utn_getValidString("Ingrese el nombre: ","Error","Error, excediste el maximo de caracteres",auxName,51,3);
+    int nuevotipo;
+    int opciones;
+    int auxId;
+    int indicePantallaAModificar;
+    utn_getValidString("\nIngrese el nombre: ","\nError","\nError, excediste el maximo de caracteres.",auxName,51,3);
     obtenerListaFiltrada(list,auxList,limite,auxName);
-    pan_printPantalla(auxList,(limite-1));//probar con un for (i<limite-1)
-    if(utn_getValidInt("\nIngrese el id: ","Error, repuesta incorrecta",&auxId,1,1001,3)==0)
+    pan_printPantalla(auxList,(limite));//probar con un for (i<limite-1)
+    if(utn_getValidInt("\nIngrese el id: ","\nError, repuesta incorrecta.",&auxId,1,1001,3)==0)
     {
         indicePantallaAModificar=pan_buscarEmpleadoPorId(list,limite,auxId);
-        if(utn_getValidInt("1-Modificar nombre\n2-Modificar direccion\n3-Tipo de pantalla\nIngrese opcion: ",
-                           "Error",&indicePantallaAModificar,1,3,3))
+        if(utn_getValidInt("\n\nQue desea modificar?\n1-Modificar nombre\n2-Modificar direccion\n3-Tipo de pantalla\n4-Cancelar\n\nEliga la opcion: ",
+                           "Error",&opciones,1,3,3)==0)
         {
-            switch(indicePantallaAModificar)
+            switch(opciones)
             {
                 case 1:
-                utn_getValidString("Ingrese nuevo nombre: ","Error","Error, excediste el maximo de caracteres",nuevoNombre,51,3);
-                //strncpy(list[])
+                utn_getValidString("\nIngrese nuevo nombre: ","\nError","\nError, excediste el maximo de caracteres.",nuevoNombre,51,3);
+                strncpy(list[indicePantallaAModificar].nombre,nuevoNombre,51);
+                printf("%d-------------------------\n",indicePantallaAModificar);
+                break;
+                case 2:
+                utn_getValidStringAlfaNumerico("\nIngrese nueva direccion: ","\nError","\nError, excediste el maximo de caracteres.",nuevaDireccion,51,3);
+                strncpy(list[indicePantallaAModificar].direccion,nuevaDireccion,51);
+                break;
+                case 3:
+                utn_getValidInt("\nElija el tipo de pantalla\n\n1-LED\n2-LCD\n","\nError",&nuevotipo,1,2,3);
+
                 break;
             }
         }
@@ -213,5 +220,4 @@ int pan_orderID(Pantalla* list, int limite)
     }
     return 0;
 }
-=======
->>>>>>> 463b014750cc2ac42752d0b40f96e91a3bb73c28
+
