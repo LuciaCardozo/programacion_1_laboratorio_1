@@ -156,7 +156,7 @@ int pan_modificarPantalla(Pantalla* list, int limite)
     char auxName[51];
     char nuevoNombre[51];
     char nuevaDireccion[51];
-    int nuevotipo;
+    int nuevoTipo;
     int opciones;
     int auxId;
     int indicePantallaAModificar;
@@ -181,7 +181,7 @@ int pan_modificarPantalla(Pantalla* list, int limite)
                 strncpy(list[indicePantallaAModificar].direccion,nuevaDireccion,51);
                 break;
                 case 3:
-                utn_getValidInt("\nElija el tipo de pantalla\n\n1-LED\n2-LCD\n","\nError",&nuevotipo,1,2,3);
+                utn_getValidInt("\nElija el tipo de pantalla\n\n1-LED\n2-LCD\n","\nError",&nuevoTipo,1,2,3);
 
                 break;
             }
