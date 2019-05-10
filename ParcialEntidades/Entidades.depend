@@ -165,7 +165,7 @@
 
 1557359544 /home/alumno/Entregas/Fantasma (1)/prestamos.h
 
-1557359894 source:/home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/autor.c
+1557441384 source:/home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/autor.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -174,7 +174,7 @@
 
 1557352054 /home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/utn.h
 
-1557359255 /home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/autor.h
+1557440921 /home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/autor.h
 
 1557357356 source:/home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/fantasma.c
 	<string.h>
@@ -192,7 +192,7 @@
 	"utn.h"
 	"fantasma.h"
 
-1557361264 source:/home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/libro.c
+1557441384 source:/home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/libro.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -201,28 +201,29 @@
 
 1557360844 /home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/libro.h
 
-1557363460 source:/home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/main.c
+1557442938 source:/home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/main.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 	"utn.h"
-	"autor.h"
+	"socios.h"
 	"libro.h"
 	"autor.h"
 	"prestamos.h"
+	"menu.h"
 
-1557359516 /home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/socios.h
+1557441482 /home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/socios.h
 
-1557359544 /home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/prestamos.h
+1557441473 /home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/prestamos.h
 
-1557359544 source:/home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/prestamos.c
+1557441438 source:/home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/prestamos.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 	"utn.h"
 	"prestamos.h"
 
-1557363460 source:/home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/socios.c
+1557441428 source:/home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/socios.c
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
@@ -234,4 +235,16 @@
 	<stdlib.h>
 	<string.h>
 	"utn.h"
+
+1557443346 source:/home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/menu.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"socios.h"
+	"libro.h"
+	"autor.h"
+	"prestamos.h"
+
+1557442612 /home/alumno/Documentos/lu/programacion_1_laboratorio_1/ParcialEntidades/menu.h
 

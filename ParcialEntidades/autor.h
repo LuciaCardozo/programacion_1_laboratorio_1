@@ -28,4 +28,5 @@ int autor_modificar(Autor array[], int sizeArray);                              
 int autor_ordenarPorString(Autor array[],int size);                              //cambiar autor
 int autor_listar(Autor array[], int size);
 int generadorId(void);                   //cambiar autor
+int cargarDatos(Autor* arrayAutor);
 

@@ -162,7 +162,7 @@ int libro_alta(Libro array[], int size, int* contadorID)                        
         else
         {
             (*contadorID)++;
-            array[posicion].idLibro=*contadorID;                                                       //campo ID
+            array[posicion].idLibro=generadorId();                                                       //campo ID
             array[posicion].isEmpty=0;
             utn_getName("\nTitulo: ","\nError",1,TEXT_SIZE,1,array[posicion].titulo);
             utn_getUnsignedInt("\ngetUnsignedInt: ","\nError",1,sizeof(int),1,1,1,&array[posicion].idAutor);           //mensaje + cambiar campo idAutor
@@ -385,4 +385,25 @@ int libro_listar(Libro array[], int size)                      //cambiar libro
 }
 
 
+int cargarDatosLibro(Libro* arrayLibro, int* idAutor)
+{
 
+
+    strncpy(arrayLibro[0].titulo,"lucia",20);
+    arrayLibro[0].idLibro=idAutor;
+    //arrayAutor[1].sexo='F';
+    arrayLibro[0].idLibro=generadorId();
+    arrayLibro[0].isEmpty=-1;
+    strncpy(arrayLibro[2].titulo,"jonathan",20);
+    arrayLibro[2].idLibro=idAutor;
+    arrayLibro[2].idLibro=generadorId();
+    arrayLibro[2].isEmpty=-1;
+
+    strncpy(arrayLibro[1].titulo,"matias",20);
+    arrayLibro[1].idLibro=idAutor;
+
+    arrayLibro[1].idLibro=generadorId();
+    arrayLibro[1].isEmpty=-1;
+
+    return 0;
+}

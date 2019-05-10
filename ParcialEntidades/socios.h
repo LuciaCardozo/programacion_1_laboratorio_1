@@ -28,5 +28,6 @@ int socios_bajaValorRepetidoInt(Socios array[], int sizeArray, int valorBuscado)
 int socios_modificar(Socios array[], int sizeArray);                                //cambiar socios
 int socios_ordenarPorString(Socios array[],int size);                              //cambiar socios
 int socios_listar(Socios array[], int size);                      //cambiar socios
+int generadorId(void);
 
 

@@ -149,7 +149,7 @@ int autor_buscarString(Autor array[], int size, char* valorBuscado, int* indice)
 * \return int Return (-1) si Error [largo no valido o NULL pointer o no hay posiciones vacias] - (0) si se agrega un nuevo elemento exitosamente
 *
 */
-int autor_alta(Autor array[], int size, int* contadorID)                          //cambiar autor
+int autor_alta(Autor array[], int size, int* contadorID) //dejamos la firma pero usamos generadorId                         //cambiar autor
 {
     int retorno=-1;
     int posicion;
@@ -162,7 +162,7 @@ int autor_alta(Autor array[], int size, int* contadorID)                        
         else
         {
             (*contadorID)++;
-            array[posicion].idAutor=*contadorID;                                                       //campo ID
+            array[posicion].idAutor=generadorId();                                                       //campo ID
             array[posicion].isEmpty=0;
             //utn_getUnsignedInt("\ngetUnsignedInt: ","\nError",1,sizeof(int),1,1,1,&array[posicion].varInt);           //mensaje + cambiar campo varInt
             //utn_getFloat("\ngetFloat: ","\nError",1,sizeof(float),0,1,1,&array[posicion].varFloat);             //mensaje + cambiar campo varFloat
@@ -387,4 +387,24 @@ int generadorId(void)
 {
     static int idMax=1;
     return idMax++;
+}
+
+int cargarDatos(Autor* arrayAutor)
+{
+
+
+    strncpy(arrayAutor[0].nombre,"lucia",20);
+    strncpy(arrayAutor[0].apellido,"cardozo",20);
+    //arrayAutor[1].sexo='F';
+    arrayAutor[0].idAutor=generadorId();
+    arrayAutor[0].isEmpty=-1;
+    strncpy(arrayAutor[2].nombre,"jonathan",20);
+    strncpy(arrayAutor[2].apellido,"Haedo",20);
+    arrayAutor[2].idAutor=generadorId();
+    arrayAutor[2].isEmpty=-1;
+    strncpy(arrayAutor[1].nombre,"matias",20);
+    strncpy(arrayAutor[1].apellido,"murray",20);
+    arrayAutor[1].idAutor=generadorId();
+    arrayAutor[1].isEmpty=-1;
+    return 0;
 }

@@ -162,7 +162,7 @@ int prestamos_alta(Prestamos array[], int size, int* contadorID)                
         else
         {
             (*contadorID)++;
-            array[posicion].idPrestamos=*contadorID;                                                       //campo ID
+            array[posicion].idPrestamos=generadorId();                                                       //campo ID
             array[posicion].isEmpty=0;
             utn_getUnsignedInt("\ngetUnsignedInt: ","\nError",1,sizeof(int),1,1,1,&array[posicion].varInt);           //mensaje + cambiar campo varInt
 //            utn_getFloat("\ngetFloat: ","\nError",1,sizeof(float),0,1,1,&array[posicion].varFloat);             //mensaje + cambiar campo varFloat

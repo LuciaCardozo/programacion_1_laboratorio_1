@@ -27,5 +27,6 @@ int prestamos_bajaValorRepetidoInt(Prestamos array[], int sizeArray, int valorBu
 int prestamos_modificar(Prestamos array[], int sizeArray);                                //cambiar prestamos
 int prestamos_ordenarPorString(Prestamos array[],int size);                              //cambiar prestamos
 int prestamos_listar(Prestamos array[], int size);                      //cambiar prestamos
+int generadorId(void);
 
 

@@ -28,5 +28,7 @@ int libro_modificar(Libro array[], int sizeArray);                              
 int libro_ordenarPorString(Libro array[],int size);                              //cambiar libro
 int libro_listar(Libro array[], int size);//cambiar libro
 int generadorId(void);
+int cargarDatosLibro(Libro* arrayLibro, int* idAutor);
+
 
 
