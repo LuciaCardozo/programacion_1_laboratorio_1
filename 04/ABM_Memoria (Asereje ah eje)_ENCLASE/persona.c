@@ -205,21 +205,74 @@ int persona_findFree(Persona* arrayPersona[], int lenPersona)
     return ret;
 }
 
+/*
 static int generarId(void)
 {
     static int idPer=0;
     return idPer++;
 }
+*/
 
-/*int parserPersonas(char* nombreFile,Persona* arrayPersonas,int len)
+static int idPer=0;
+static int generarId(void)
 {
-    FILE *pFile;
-    int r,i=0;
-    char var1[50],var2[50],var3[50],var4[50];
-    pFile=fopen(fileName,"r");
-    if(pFile==NULL)
+    return idPer++;
+}
+static void setIdInicial(int val)
+{
+    idPer = val;
+}
+
+
+
+int parserPersonas(char* nombreF,Persona* personaArray[],int len)
+{
+    char aux[512];
+    char auxId[512];
+    char auxNombre[512];
+    char auxApellido[512];
+    char auxEdad[512];
+    int r;
+    int max=0;
+
+    FILE* fp = fopen(nombreF,"r");
+    int index=-1;
+    Persona* per;
+    if(fp!=NULL)
     {
-        return -1;
+        index=0;
+            //fscanf(fp,"%[^\n]\n",aux); // saltea
+            fgets(aux,512,fp); // saltea linea
+
+            do{
+                r = fscanf(fp,"%[^,],%[^,],%[^,],%[^\n]\n",auxId,auxNombre,auxApellido,auxEdad);
+                if(r==4)
+                {
+                    //printf("%s %s %s %s\n",auxId,auxNombre,auxApellido,auxEdad);
+                    per = persona_newParametros(auxId,auxNombre,auxApellido,auxEdad);
+                    if(per!=NULL)
+                    {
+                        if(atoi(auxId)>max)
+                            max = atoi(auxId);
+
+                        personaArray[index] = per;
+                        index++;
+                    }
+                }
+            }
+            //while(feof()==0);
+            while(!feof(fp));
+
+            setIdInicial(max);
+
+        fclose(fp);
     }
-    do
-}*/
+    return index;
+}
+
+
+
+
+
+
+
