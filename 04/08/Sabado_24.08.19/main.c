@@ -19,6 +19,12 @@ int main()
         printf("Ingrese Moneda (B,L,D,P): ");
         fflush(stdin);
         scanf("%s",&tipo);
+        if(tipo!='d' && tipo!='l' && tipo!='b' && tipo!='p' && tipo!='D' && tipo!='L' && tipo!='B' && tipo!='P')
+        {
+            printf("Error, Ingrese Moneda (B,L,D,P): ");
+            fflush(stdin);
+            scanf("%s",&tipo);
+        }
         if((numMax>dinero && tipo=='D') || tipo=='d')
         {
             numMax=dinero;
