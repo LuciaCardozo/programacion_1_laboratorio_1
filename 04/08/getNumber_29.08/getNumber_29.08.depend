@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1567126297 source:/home/alumno/programacion_1_laboratorio_1/04/08/getNumber_29.08/main.c
+	<stdio.h>
+	<stdlib.h>
+	"biblioteca_practica.h"
+
+1567126266 source:/home/alumno/programacion_1_laboratorio_1/04/08/getNumber_29.08/biblioteca_practica.c
+	<stdio.h>
+	<stdlib.h>
+
+1567126239 /home/alumno/programacion_1_laboratorio_1/04/08/getNumber_29.08/biblioteca_practica.h
+
