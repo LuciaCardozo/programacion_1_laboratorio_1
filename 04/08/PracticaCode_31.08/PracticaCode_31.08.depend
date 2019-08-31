@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1567263220 source:/home/alumno/programacion_1_laboratorio_1/04/08/PracticaCode_31.08/funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1567260259 source:/home/alumno/programacion_1_laboratorio_1/04/08/PracticaCode_31.08/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
+1567259657 /home/alumno/programacion_1_laboratorio_1/04/08/PracticaCode_31.08/funciones.h
+
