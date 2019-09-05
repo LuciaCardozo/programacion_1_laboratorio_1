@@ -1,6 +1,6 @@
 /*
  ============================================================================
- Name        : 08.c
+ Name        : eclipse.c
  Author      : 
  Version     :
  Copyright   : Your copyright notice
@@ -10,10 +10,16 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "funciones.h"
+#include "funcionesDePrueba.h"
+#define QTY 5
 
 int main(void)
 {
-	menuOpciones();
-	return 0;
+    int edades[QTY] = {100,200,300,400,500};
+    /*initArrayInt(edades,QTY,22);
+    getArrayInt(edades,QTY,"\nEdad?\n","\nERROR\n",0,200,2);*/
+    printArrayInt(edades,QTY);
+    intMaxMinProm(edades,QTY);
+
+    return EXIT_SUCCESS;
 }

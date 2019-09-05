@@ -8,14 +8,13 @@
 #ifndef FUNCIONES_H_
 #define FUNCIONES_H_
 
-void saludar();
-void sumarDosNumeros(int numeroA,int numeroB);
-void sumar(int numeroA,int numeroB);
-float sumarDosNumeros(float* resultado,float numeroA,float numeroB);
-float restarDosNumeros(float* resultado,float numeroA,float numeroB);
-float multiplicacionDosNumeros(float* resultado,float numeroA,float numeroB);
-int dividirDosNumeros(float *resultado, float *numeroA,float *numeroB);
+
+float sumarDosNumeros(float *resultadoSuma,float numeroA,float numeroB);
+float restarDosNumeros(float *resultadoResta,float numeroA,float numeroB);
+float multiplicacionDosNumeros(float* resultadoMult,float numeroA,float numeroB);
+int dividirDosNumeros(float *resultadoDiv, float numeroA,float numeroB);
 int menuOpciones();
-int calcular(float *resultado,float numberOne,float numberTwo);
+int pedirNumero();
+int mostrarOpciones();
 
 #endif /* FUNCIONES_H_ */

@@ -7,108 +7,113 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void saludar()
+float sumarDosNumeros(float *resultadoSuma,float numeroA,float numeroB)
 {
-    printf("\nBienvenidos");
+    *resultadoSuma = numeroA + numeroB;
+    return *resultadoSuma;
 }
 
-void sumarDosNumeros(int numeroA,int numeroB)
+float restarDosNumeros(float *resultadoResta,float numeroA,float numeroB)
 {
-    int suma;
-    suma = numeroA + numeroB;
-    printf("\nEl resultado es: %d",suma);
+    *resultadoResta = numeroA - numeroB;
+    return *resultadoResta;
 }
 
-void sumar(int numeroA,int numeroB)
+float multiplicacionDosNumeros(float* resultadoMult,float numeroA,float numeroB)
 {
-    numeroA = numeroA + numeroB;
-    printf("\nEl resultado es: %d",numeroA);
+    *resultadoMult = numeroA * numeroB;
+    return *resultadoMult;
 }
 
-float sumarDosNumeros(float* resultado,float numeroA,float numeroB)
+int dividirDosNumeros(float *resultadoDiv, float numeroA,float numeroB)
 {
-    *resultado = numeroA + numeroB;
-    printf("\nEl resultado es: %.2f",resultado);
-    return resultado;
-}
-
-float restarDosNumeros(float* resultado,float numeroA,float numeroB)
-{
-    *resultado = numeroA - numeroB;
-    printf("\nEl resultado es: %.2f",resultado);
-    return resultado;
-}
-
-float multiplicacionDosNumeros(float* resultado,float numeroA,float numeroB)
-{
-    *resultado = numeroA * numeroB;
-    printf("\nEl resultado es: %.2f",resultado);
-    return resultado;
-}
-
-int dividirDosNumeros(float *resultado, float *numeroA,float *numeroB)
-{
-	int ret = -1;
-	*resultado = numeroA / numeroB;
+	int ret;
+	*resultadoDiv = numeroA/numeroB;
 	if(numeroA!=0 || numeroB!=0)
 	{
-		printf("\nEl resultado es: %.2f",resultado);
 		ret = 0;
 	}
 	else
 	{
-		printf("Error");
+		ret = -1;
 	}
 
 	return ret;
 }
 
-int calcular(float *resultado,float numberOne,float numberTwo)
+int pedirNumero()
 {
-	sumarDosNumeros(&resultado,numberOne,numberTwo);
-	restarDosNumeros(&resultado,numberOne,numberTwo);
-	multiplicacionDosNumeros(&resultado,numberOne,numberTwo);
-	dividirDosNumeros(&resultado, numberOne,numberTwo);
-	return 0;
+    int number;
+    printf("Ingrese un numero: ");
+    scanf("%d",&number);
+    return number;
+}
+
+int mostrarOpciones()
+{
+    int numeroUno;
+    int numeroDos;
+    printf("1.Ingrese numero uno: ");
+    fflush(stdin);
+    scanf("%d",&numeroUno);
+    printf("2.Ingrese numero Dos: ");
+    fflush(stdin);
+    scanf("%d",&numeroDos);
+    printf("3.Calcular: ");
+    printf("2.Mostrar Calculos: ");
+    return 0;
 }
 
 int menuOpciones()
 {
-	int ret=-1;
 	float numeroUno;
 	float numeroDos;
-	float resultado;
+	float resultadoSuma;
+	float resultadoResta;
+	float resultadoMult;
+	float resultadoDiv;
 	int opcion;
+	printf("Estoy fuera");
 	do{
+        opcion = mostrarOpciones();
 		switch(opcion)
 		{
 			if(opcion==2 && opcion!=1)
 			{
 				printf("\nError, falta un operando.");
+				break;
 			}
 			else if(opcion==3 && opcion==4)
 			{
-				printf("\nNo se cargaron numeros.")
+				printf("\nNo se cargaron numeros.");
+				break;
 			}
-			case 1:
-			printf("Ingrese un numero: ");
-			fflush(stdin);
-			scanf("%.2f",numeroUno);
-			break;
-			case 2:
-			printf("Ingrese un numero: ");
-			fflush(stdin);
-			scanf("%.2f",numeroDos);
-			break;
-			case 3:
-			calcular(&resultado,numeroUno,numeroDos);
-			break;
-			case 4:
-			break;
+			else
+			{
 
+                case 1:
+                printf("Ingrese un numero: ");
+                fflush(stdin);
+                scanf("%f",&numeroUno);
+                break;
+                case 2:
+                printf("Ingrese un numero: ");
+                fflush(stdin);
+                scanf("%f",&numeroDos);
+                break;
+                case 3:
+                sumarDosNumeros(&resultadoSuma,numeroUno,numeroDos);
+                restarDosNumeros(&resultadoResta,numeroUno,numeroDos);
+                multiplicacionDosNumeros(&resultadoMult,numeroUno,numeroDos);
+                dividirDosNumeros(&resultadoDiv,numeroUno,numeroDos);
+                break;
+                case 4:
 
+                break;
+			}
 		}
-	}while(opcion!=5)
-	return ret;
+	}while(opcion!=5);
+	return 0;
 }
+
 
