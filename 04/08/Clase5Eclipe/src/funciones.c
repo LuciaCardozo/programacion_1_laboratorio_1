@@ -1,9 +1,15 @@
+/*
+ * funciones.c
+ *
+ *  Created on: 5 sep. 2019
+ *      Author: alumno
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio_ext.h>
 
-int swapBubble(int *pArray,int len)
+int ordenar(int *pArray,int len)
 {
     int ret = -1;
     int aux;
@@ -26,31 +32,6 @@ int swapBubble(int *pArray,int len)
         ret=0;
     }
     return ret;
-}
-
-int bubbleSort(int *pArray,int len)
-{
-    int i;
-    int flagEstaDesordenado=1;
-    int aux;
-    if(pArray!=NULL && len>0)
-    {
-        while(flagEstaDesordenado==1)
-        {
-            flagEstaDesordenado=0;
-            for(i=0;i<len-1;i++)
-            {
-                if(pArray[i]>pArray[i+1])
-                {
-                    aux=pArray[i];
-                    pArray[i]=pArray[i+1];
-                    pArray[i+1]=aux;
-                    flagEstaDesordenado=1;
-                }
-            }
-        }
-    }
-    return 0;
 }
 
 int getNumberInt(int *numero,char *msg,char *msgError,int minInt,int maxInt,int reintentos)
@@ -175,30 +156,12 @@ int sacarNumeroMaxMin(int *pFlag,float numero,float*numMax,float *numMin)
     return 0;
 }
 
-int printSacarPromedio(int *pArray,int len)
-{
-    int ret = -1;
-    int i;
-    int suma=0;
-    float promedio;
-    if(pArray!=NULL && len>0)
-    {
-        for(i=0;i<len;i++)
-        {
-            suma=suma+pArray[i];
-        }
-        ret = 0;
-    }
-    promedio=suma/len;
-    printf("\nPromedio: %.2f",promedio);
-    return ret;
-}
-
-int printMaxMinInt(int *pArray,int limite)
+int intMaxMinProm(int *pArray,int limite)
 {
     int sum=0;
     float max=0;
     float min=0;
+    float promedio;
     int i=0;
     int flag=0;
     if(pArray!=NULL && limite>0)
@@ -213,14 +176,14 @@ int printMaxMinInt(int *pArray,int limite)
             }
         }
     }
-    /*promedio=sum/i;
-    printf("\nPromedio: %.2f",promedio);*/
+    promedio=sum/i;
+    printf("\nPromedio: %.2f",promedio);
     printf("\nNumero Minimo: %.2f",min);
     printf("\nNumero Maximo: %.2f",max);
     return 0;
 }
 
-int printSumaArrays(int *pArray,int len)
+int sumaArrays(int *pArray,int len)
 {
     int ret = -1;
     int i;
@@ -237,28 +200,3 @@ int printSumaArrays(int *pArray,int len)
     return ret;
 }
 
-/*int getArrayInt(int *pArray,int limite,char *msg,char *msgError,int minInt,int maxInt,int reintentos)
-{
-    int ret = -1;
-    int buffer;
-    char respuesta;
-    int i=0;
-    printf("\nDEBUG");
-    if(pArray!=NULL && limite>0)
-    {
-        for(i=0;i<limite;i++)
-        {
-            if(getNumberInt(&buffer,msg,msgError,minInt,maxInt,reintentos)==0)
-            {
-                pArray[i] = buffer;
-                if(i == limite)
-                {
-                    break;
-                }
-            }
-        }
-        ordenar(pArray,limite);
-        ret = 0;
-    }
-    return ret;
-}*/

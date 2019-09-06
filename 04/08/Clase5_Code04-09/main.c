@@ -5,12 +5,15 @@
 
 int main()
 {
-    int edades[QTY] = {100,200,300,400,500};
+    int edades[QTY]={50,2,35,15,8};
     /*initArrayInt(edades,QTY,22);
     int cantidadUsuario;
-    cantidadUsuario=getArrayInt(edades,QTY,"\nEdad?\n","\nERROR\n",0,200,2);*/
+    getArrayInt(edades,QTY,"\nEdad?\n","\nERROR\n",0,200,2);*/
+    swapBubble(edades,QTY);
     printArrayInt(edades,QTY);
-    intMaxMinProm(edades,QTY);
+    printSumaArrays(edades,QTY);
+    printSacarPromedio(edades,QTY);
+    printMaxMinInt(edades,QTY);
 
     return 0;
 }
