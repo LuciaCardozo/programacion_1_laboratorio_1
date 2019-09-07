@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1567866177 source:/home/alumno/programacion_1_laboratorio_1/04/08/09Arrays/sabado_07/funcionesSabado.c
+	<stdio.h>
+	<stdlib.h>
+
+1567866231 source:/home/alumno/programacion_1_laboratorio_1/04/08/09Arrays/sabado_07/main.c
+	<stdio.h>
+	<stdlib.h>
+	"funcionesSabado.h"
+
+1567866177 /home/alumno/programacion_1_laboratorio_1/04/08/09Arrays/sabado_07/funcionesSabado.h
+
