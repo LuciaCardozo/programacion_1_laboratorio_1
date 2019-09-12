@@ -17,7 +17,7 @@ int main()
     for(i=0;i<CANT_CLIENTE;i++)
     {
         utn_getString(MSG_INGRESONOM,auxNombre);
-        strcpy(arrayNombre[i],auxNombre);
+        strncpy(arrayNombre[i],auxNombre,50);
     }
     utn_printString(arrayNombre,CANT_CLIENTE);
 
