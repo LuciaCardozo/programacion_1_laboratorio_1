@@ -4,8 +4,6 @@
 #include <string.h>
 #include "utn.h"
 
-
-
 float utn_getFloat(char* msg)
 {
     float aux;
@@ -181,7 +179,7 @@ int utn_esCuitConGuiones(char* str)
        }
        i++;
    }
-   if(contadorGuiones<=2) // debe tener un guion
+   if(contadorGuiones<=2) /*debe tener un guion*/
         {
             return 1;
         }
@@ -201,7 +199,7 @@ int utn_esTelefono(char str[])
             contadorGuiones++;
        i++;
    }
-   if(contadorGuiones==1) // debe tener un guion
+   if(contadorGuiones==1) /* debe tener un guion*/
         return 1;
 
     return 0;
@@ -422,12 +420,12 @@ void pause(void)
 
 void utn_clearScreen(void)
 {
-    system("clear"); //system("cls");
+    system("clear"); /*system("cls");*/
 }
 
 void utn_menuDeOpciones(void)
 {
-  // int menu;
+  /* int menu;*/
 
        printf("\n1-Alta de pantalla \n");
        printf("-------------------------------------------\n");
@@ -442,8 +440,8 @@ void utn_menuDeOpciones(void)
        printf("6-salir\n");
        printf("-------------------------------------------\n");
 
-    //utn_getValidInt("\n5-SALIR.\n","la opcion no exite\n",&menu,1,5,1);
-   //return menu;
+    /*utn_getValidInt("\n5-SALIR.\n","la opcion no exite\n",&menu,1,5,1);
+   return menu;*/
 
 }
 int utn_getStringAlfaNumerico(char mensaje[],char input[])
@@ -527,7 +525,7 @@ int utn_isValidName(char* name)
     return retorno;
 }
 
-int utn_IsValidSueldo(int sueldo)//sueldo en int.
+int utn_IsValidSueldo(int sueldo)/*sueldo en int.*/
 {
     int retorno=-1;
     if(sueldo>0 && sueldo< 1000000)
@@ -537,3 +535,8 @@ int utn_IsValidSueldo(int sueldo)//sueldo en int.
     return retorno;
 }
 
+/*static int generarId(void)
+{
+    static int idMax=0;
+    return idMax++;
+}*/

@@ -1,7 +1,6 @@
 #ifndef UTN_H_INCLUDED
 #define UTN_H_INCLUDED
 
-#endif // UTN_H_INCLUDED
 /** \brief muestra un menu de opciones
  *
  * \param void sin parametros
@@ -297,3 +296,4 @@ int utn_getValidMail(char*dni);
 int utn_getValidCuit(char*cuit);
 int utn_getValidStringNumerico(char requestMessage[],char errorMessage[], char errorMessageLenght[],char input[], int maxLenght,int attemps);
 int utn_getValidStringNumericoFloat(char requestMessage[],char errorMessage[], char errorMessageLenght[],char input[], int maxLenght,int attemps);
+#endif /* UTN_H_INCLUDED*/
