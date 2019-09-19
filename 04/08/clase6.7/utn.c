@@ -111,7 +111,7 @@ int utn_getValidLastName(char* lastName)
 {
     int retorno=-1;
     char auxLastName[500];
-        if(!utn_getValidString("ingrese apellido: ","ERROR, apellido no valido\n","ERROR, son demasiados caracteres para un apellido\n",auxLastName,500,2))
+        if(!utn_getValidString("Ingrese apellido: ","ERROR, apellido no valido\n","ERROR, son demasiados caracteres para un apellido\n",auxLastName,500,2))
         {
 
             if(utn_esNombres(auxLastName)==1)
@@ -131,7 +131,7 @@ int utn_getValidName(char* name)
 {
     int retorno=-1;
     char auxName[500];
-        if(!utn_getValidString("ingrese el nombre: ","ERROR, Name no valido\n","ERROR, son demasiados caracteres para un nombre\n",auxName,500,2))
+        if(!utn_getValidString("Ingrese el nombre: ","ERROR, Name no valido\n","ERROR, son demasiados caracteres para un nombre\n",auxName,500,2))
         {
 
             if(utn_esNombres(auxName)==1)

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1568471553 source:/home/alumno/programacion_1_laboratorio_1/04/08/clase6.7/main.c
+1568854924 source:/home/alumno/programacion_1_laboratorio_1/04/08/clase6.7/main.c
 	<stdio.h>
 	<stdlib.h>
 	"utn.h"
@@ -7,14 +7,14 @@
 
 1568463233 /home/alumno/programacion_1_laboratorio_1/04/08/clase6.7/utn.h
 
-1568467671 source:/home/alumno/programacion_1_laboratorio_1/04/08/clase6.7/utn.c
+1568843577 source:/home/alumno/programacion_1_laboratorio_1/04/08/clase6.7/utn.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<string.h>
 	"utn.h"
 
-1568472038 source:/home/alumno/programacion_1_laboratorio_1/04/08/clase6.7/Estructura.c
+1568855605 source:/home/alumno/programacion_1_laboratorio_1/04/08/clase6.7/Estructura.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -22,5 +22,5 @@
 	"utn.h"
 	"Estructura.h"
 
-1568471553 /home/alumno/programacion_1_laboratorio_1/04/08/clase6.7/Estructura.h
+1568854590 /home/alumno/programacion_1_laboratorio_1/04/08/clase6.7/Estructura.h
 
