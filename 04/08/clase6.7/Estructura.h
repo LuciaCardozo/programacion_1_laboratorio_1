@@ -19,6 +19,7 @@ int buscarPersonaPorId(Persona *list,int len,int id);
 int bajaPersona(Persona *list,int len,int id);
 int per_printfPersonas(Persona *list,int len);
 int per_ordenarPorEdad(Persona *list,int len);
+int modificarPersona(Persona *list, int len,int id);
 int menu(Persona *list,int len);
 
 #endif /* ESTRUCTURA_H_INCLUDED*/

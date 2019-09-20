@@ -14,11 +14,11 @@ int per_initPersona(Persona *list,int len)
     int i;
     if(list!=NULL && len>0)
     {
-        for(i=0;i<len;i++)
+        for(i=0; i<len; i++)
         {
             list[i].isEmpty=LIBRE;
         }
-    ret = 0;
+        ret = 0;
     }
     return ret;
 }
@@ -29,7 +29,7 @@ int per_buscarLugarLibre(Persona *list,int len)
     int i;
     if(list!=NULL && len>0)
     {
-        for(i=0;i<len;i++)
+        for(i=0; i<len; i++)
         {
             if(list[i].isEmpty==LIBRE)
             {
@@ -78,16 +78,17 @@ int per_altaPersona(Persona *list,int len)
     if(list!=NULL && len>0)
     {
         if(utn_getValidName(auxName)==0 && utn_getValidLastName(auxLastName)==0 &&
-            utn_getValidInt("Ingrese edad: ","\nERROR, no es una edad.",&auxEdad,0,130,2)==0 &&
-            utn_getValidStringNumerico("Ingrese Dni: ","\nError.","\nError, superaste el largo de caracteres.\n",auxDni,8,2)==0)
-            {
-                auxId=generarId();
-                per_addPersona(list,len,auxId,auxName,auxLastName,auxEdad,auxDni);
-                printf("\nID de Persona: %d\nNombre: %s\nApellido: %s\nEdad: %d\nDni: %s",
-                auxId,auxName,auxLastName,auxEdad,auxDni);
-                ret=0;
+                utn_getValidInt("Ingrese edad: ","\nERROR, no es una edad.",&auxEdad,0,130,2)==0 &&
+                utn_getValidStringNumerico("Ingrese Dni: ","\nError.","\nError, superaste el largo de caracteres.\n",auxDni,8,2)==0)
+        {
+            auxId=generarId();
+            per_addPersona(list,len,auxId,auxName,auxLastName,auxEdad,auxDni);
+            printf("\n------------------------\n");
+            printf("\nID de Persona: %d\nNombre: %s\nApellido: %s\nEdad: %d\nDni: %s\n",
+                   auxId,auxName,auxLastName,auxEdad,auxDni);
+            ret=0;
 
-            }
+        }
     }
     return ret;
 }
@@ -98,7 +99,7 @@ int per_printfPersonas(Persona *list,int len)
     int i;
     if(list!=NULL && len>0)
     {
-        for(i=0;i<len;i++)
+        for(i=0; i<len; i++)
         {
             if(list[i].isEmpty==OCUPADO)
             {
@@ -107,7 +108,7 @@ int per_printfPersonas(Persona *list,int len)
                 printf("\nEdad: %d",list[i].edad);
                 printf("\nDni: %s",list[i].dni);
                 printf("\nId: %d\n",list[i].id);
-                printf("\n----------------\n");
+                printf("\n------------------------\n");
             }
         }
         ret=0;
@@ -121,7 +122,7 @@ int buscarPersonaPorId(Persona *list,int len,int id)
     int i;
     if(list!=NULL && len>0)
     {
-        for(i=0;i<len;i++)
+        for(i=0; i<len; i++)
         {
             if(list[i].id==id)
             {
@@ -138,7 +139,7 @@ int bajaPersona(Persona *list,int len,int id)
     int ret = -1;
     if(list!=NULL && len>0)
     {
-        for(i=0;i<len;i++)
+        for(i=0; i<len; i++)
         {
             if(list[i].id==id)
             {
@@ -150,8 +151,122 @@ int bajaPersona(Persona *list,int len,int id)
     return ret;
 }
 
+int modificarPersona(Persona *list, int len,int id)
+{
+    int ret = -1;
+    char nuevoNombre[50];
+    char nuevoApellido[51];
+    int nuevaEdad;
+    char nuevoDni[10];
+    int opciones;
+    int auxId;
+    int indicePersonaAModificar;
+    if(utn_getValidInt("\nIngrese el id: ","\nError, repuesta incorrecta.",&auxId,0,99999,2)==0)
+    {
+        indicePersonaAModificar=buscarPersonaPorId(list,len,auxId);
+        do
+        {
+            if(utn_getValidInt("\n\nQue desea modificar?\n1-Modificar nombre\n2-Modificar Apellido\n3-Edad\n4-Dni\n5-Cancelar\nEliga la opcion: ",
+                               "Error",&opciones,1,5,2)==0)
+            {
+                switch(opciones)
+                {
+                case 1:
+                    utn_getValidString("\nIngrese nuevo nombre: ","\nError","\nError, excediste el maximo de caracteres.",nuevoNombre,50,2);
+                    strncpy(list[indicePersonaAModificar].nombre,nuevoNombre,50);
+                    printf("%s-------------------------\n",list[indicePersonaAModificar].nombre);
+                    break;
+                case 2:
+                    utn_getValidString("\nIngrese nuevo Apellido: ","\nError","\nError, excediste el maximo de caracteres.",nuevoApellido,50,2);
+                    strncpy(list[indicePersonaAModificar].apellido,nuevoApellido,50);
+                    printf("%d-------------------------\n",indicePersonaAModificar);
+                    break;
+                case 3:
+                    utn_getValidInt("\nIngrese edad: ","\nError",&nuevaEdad,1,130,3);
+                    list[indicePersonaAModificar].edad=nuevaEdad;
+                    break;
+                case 4:
+                    utn_getValidStringNumerico("Ingrese Dni: ","\nError.","\nError, superaste el largo de caracteres.\n",nuevoDni,8,2);
+                    strncpy(list[indicePersonaAModificar].dni,nuevoDni,10);
+                    break;
+                case 5:
+                    break;
+                default :
+                    printf("No es una opcion");
+                    break;
+                }
+            }
+        }
+        while(opciones!=5);
+
+        ret=0;
+    }
+    return ret;
+}
+
+/*if(indicePantallaAModificar)*/
+
+
+
+
+/*int ret = -1;
+int auxId;
+char auxName[50];
+char auxLastName[50];
+int auxEdad;
+char auxDni[10];
+int opciones;
+if(list!=NULL && len>0)
+{
+
+    do
+    {
+        per_printfPersonas(list,len);
+        if(utn_getValidInt("Ingrese Id a modificar: ","\nERROR, no es una id.",&auxId,0,99999,2)==0)
+        {
+            if(buscarPersonaPorId(list,len,auxId)==-1)
+            {
+                printf("EL ID NO EXISTE\n");
+            }
+            else
+            {
+                if(utn_getValidInt("\tMODIFICAR\n1.Nombre\n2.Apellido\n3.Edad\n4.Dni\n5.Salir\nIngrese opcion: ","\nERROR, no es una id.",&opciones,1,5,2)==0)
+                {
+                    switch(opciones)
+                    {
+                        case 1:
+                        if(utn_getValidName(auxName)==0)
+                        {
+                            strncpy(list[auxId].nombre,auxName,50);
+                            printf("Nombre modificado: %s",list[auxId].nombre);
+                        }
+                        break;
+                        case 2:
+                        break;
+                        case 3:
+                        break;
+                        case 4:
+                        break;
+                        case 5:
+                        break;
+                        default :
+                        printf("\nOpcion incorrecta");
+                        break;
+                    }
+                }
+            }
+
+        }
+    }while(opciones!=5);
+    ret=0;
+}
+
+return ret;*/
+
+
 int menu(Persona *list,int len)
 {
+    per_initPersona(list,len);
     int opciones;
     int auxId;
     do
@@ -162,46 +277,49 @@ int menu(Persona *list,int len)
             switch(opciones)
             {
             case 1:
-            if(per_altaPersona(list,len)==0)
-            {
-                printf("\n\n\tALTA EXITOSA\n");
-            }
-            else
-            {
-                printf("ERROR,No hay lugar");
-            }
-            break;
-            case 2:
-            per_printfPersonas(list,len);
-            if(utn_getValidInt("\nIngrese id: ","ERROR",&auxId,0,99999,2)==0)
-            {
-                if(buscarPersonaPorId(list,len,auxId)!=-1)
+                if(per_altaPersona(list,len)==0)
                 {
-                    bajaPersona(list,len,auxId);
-                    printf("\nBAJA EXITOSA\n");
+                    printf("\n------------------------\n");
+                    printf("\n\tALTA EXITOSA\n");
                 }
                 else
                 {
-                    printf("\nNO EXISTE ID.");
+                    printf("ERROR,No hay lugar");
                 }
-            }
-            break;
+                break;
+            case 2:
+                per_printfPersonas(list,len);
+                if(utn_getValidInt("\nIngrese id: ","ERROR",&auxId,0,99999,2)==0)
+                {
+                    if(buscarPersonaPorId(list,len,auxId)!=-1)
+                    {
+                        bajaPersona(list,len,auxId);
+                        printf("\nBAJA EXITOSA\n");
+                    }
+                    else
+                    {
+                        printf("\nNO EXISTE ID.");
+                    }
+                }
+                break;
             case 3:
-            break;
+                modificarPersona(list,len,auxId);
+                break;
             case 4:
-            per_printfPersonas(list,len);
-            break;
+                per_printfPersonas(list,len);
+                break;
             case 5:
-            break;
+                break;
             case 6:
-            break;
+                break;
             default:
-            printf("opcion incorrecta.");
-            break;
+                printf("opcion incorrecta.");
+                break;
             }
 
         }
-    }while(opciones!=6);
+    }
+    while(opciones!=6);
 
     return 0;
 }
@@ -214,9 +332,9 @@ int per_ordenarPorEdad(Persona *list,int len)
     int i,j;
     if(list!=NULL && len>0)
     {
-        for(i=0;i<len-1;i++)
+        for(i=0; i<len-1; i++)
         {
-            for(j=i+1;j<len;j++)
+            for(j=i+1; j<len; j++)
             {
                 if(list[i].edad>list[j].edad)
                 {
