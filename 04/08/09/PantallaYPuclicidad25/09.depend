@@ -31,3 +31,51 @@
 	<string.h>
 	"utn.h"
 
+1569510803 source:c:\users\lucia\desktop\laboratorio1ºe\programacion_1_laboratorio_1\04\08\09\pantallaypuclicidad25\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"Pantalla.h"
+	"Publicidad.h"
+	"SubMenuYMenu.h"
+
+1569504990 c:\users\lucia\desktop\laboratorio1ºe\programacion_1_laboratorio_1\04\08\09\pantallaypuclicidad25\utn.h
+
+1569527864 c:\users\lucia\desktop\laboratorio1ºe\programacion_1_laboratorio_1\04\08\09\pantallaypuclicidad25\pantalla.h
+
+1569528024 source:c:\users\lucia\desktop\laboratorio1ºe\programacion_1_laboratorio_1\04\08\09\pantallaypuclicidad25\pantalla.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"Pantalla.h"
+
+1569504990 source:c:\users\lucia\desktop\laboratorio1ºe\programacion_1_laboratorio_1\04\08\09\pantallaypuclicidad25\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1569528966 c:\users\lucia\desktop\laboratorio1ºe\programacion_1_laboratorio_1\04\08\09\pantallaypuclicidad25\publicidad.h
+
+1569510478 c:\users\lucia\desktop\laboratorio1ºe\programacion_1_laboratorio_1\04\08\09\pantallaypuclicidad25\submenuymenu.h
+
+1569529247 source:c:\users\lucia\desktop\laboratorio1ºe\programacion_1_laboratorio_1\04\08\09\pantallaypuclicidad25\publicidad.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"Pantalla.h"
+	"Publicidad.h"
+
+1569529376 source:c:\users\lucia\desktop\laboratorio1ºe\programacion_1_laboratorio_1\04\08\09\pantallaypuclicidad25\submenuymenu.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"Pantalla.h"
+	"Publicidad.h"
+	"SubMenuYMenu.h"
+

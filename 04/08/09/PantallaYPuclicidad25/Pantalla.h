@@ -11,14 +11,14 @@ typedef struct
     int tipo;
 }Pantalla;
 
-int pan_initPantalla(Pantalla *list,int len);
-int pan_buscarLugarLibre(Pantalla *list,int len);
-int pan_addPantalla(Pantalla *list, int len, int idPan, char *name,char *adress,float precio,int tipo);
-int pan_altaPantalla(Pantalla *list,int len);
-int pan_printfPantalla(Pantalla *list,int len);
-int pan_buscarPantallaPorId(Pantalla *list,int len,int id,int *posicion);
-int pan_bajaPantalla(Pantalla *list,int len,int id);
-int pan_modificarPantalla(Pantalla *list, int len,int id);
-int menu(Pantalla *list,int len);
+int pan_initPantalla(Pantalla *listPan,int lenPan);
+int pan_buscarLugarLibre(Pantalla *listPan,int lenPan);
+int pan_addPantalla(Pantalla *listPan, int lenPan, int idPan, char *name,char *adress,float precio,int tipo);
+int pan_altaPantalla(Pantalla *listPan,int lenPan);
+int pan_printfPantalla(Pantalla *listPan,int lenPan);
+int pan_buscarPantallaPorId(Pantalla *listPan,int lenPan,int id,int *posicion);
+int pan_bajaPantalla(Pantalla *listPan,int lenPan,int id);
+int pan_modificarPantalla(Pantalla *listPan, int lenPan,int id);
+int pan_printfPantallaPorId(Pantalla *listPan,int lenPan,int id);
 
 #endif /* PANTALLA_H_INCLUDED */

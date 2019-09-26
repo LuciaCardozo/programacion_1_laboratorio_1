@@ -3,35 +3,42 @@
 #include <string.h>
 #include "utn.h"
 #include "Pantalla.h"
+#include "Publicidad.h"
 #define LIBRE 0
 #define OCUPADO 1
 
-static int generarId(void);
+static int generarIdPublicidad(void);
 
-int pub_initPublicidad(Publicidad *list,int len)
+static int generarIdPublicidad(void)
+{
+    static int idMax=1;
+    return idMax++;
+}
+
+int pub_initPublicidad(Publicidad *listPub,int lenPub)
 {
     int ret = -1;
     int i;
-    if(list!=NULL && len>0)
+    if(listPub!=NULL && lenPub>0)
     {
-        for(i=0; i<len; i++)
+        for(i=0; i<lenPub; i++)
         {
-            list[i].isEmpty=LIBRE;
+            listPub[i].isEmpty=LIBRE;
         }
         ret = 0;
     }
     return ret;
 }
 
-int pub_buscarLugarLibre(Publicidad *list,int len)
+int pub_buscarLugarLibre(Publicidad *listPub,int lenPub)
 {
     int ret = -1;
     int i;
-    if(list!=NULL && len>0)
+    if(listPub!=NULL && lenPub>0)
     {
-        for(i=0; i<len; i++)
+        for(i=0; i<lenPub; i++)
         {
-            if(list[i].isEmpty==LIBRE)
+            if(listPub[i].isEmpty==LIBRE)
             {
                 ret=i;
                 break;
@@ -41,22 +48,22 @@ int pub_buscarLugarLibre(Publicidad *list,int len)
     return ret;
 }
 
-int pub_addPublicidad(Publicidad *list, int len, int idPub,int idPantalla,int cantDeDia,char *cuit,char *nombre)
+int pub_addPublicidad(Publicidad *listPub, int lenPub, int idPub,int idPantalla,int cantDeDia,char *cuit,char *nombre)
 {
     int retorno=-1;
     int posLibre;
 
-    posLibre=pub_buscarLugarLibre(list,len);
-    if(list!=NULL && len>0)
+    posLibre=pub_buscarLugarLibre(listPub,lenPub);
+    if(listPub!=NULL && lenPub>0)
     {
         if(posLibre!=-1)
         {
-            list[posLibre].cantidadDeDia=cantDeDia;
-            strncpy(list[posLibre].cuit,cuit,20);
-            strncpy(list[posLibre].nombreArch,nombre,50);
-            list[posLibre].idPan=idPantalla;
-            list[posLibre].isEmpty=OCUPADO;
-            list[posLibre].idPub=idPub;
+            listPub[posLibre].cantidadDeDia=cantDeDia;
+            strncpy(listPub[posLibre].cuit,cuit,20);
+            strncpy(listPub[posLibre].nombreArch,nombre,50);
+            listPub[posLibre].idPan=idPantalla;
+            listPub[posLibre].isEmpty=OCUPADO;
+            listPub[posLibre].idPub=idPub;
         }
         retorno=0;
     }
@@ -67,16 +74,16 @@ int pub_addPublicidad(Publicidad *list, int len, int idPub,int idPantalla,int ca
     return retorno;
 }
 
-int pub_altaPublicidad(Publicidad *list,int len,Pantalla *listPan,int lenPan)
+int pub_altaPublicidad(Publicidad *listPub,int lenPub,Pantalla *listPan,int lenPan)
 {
     char auxNombre[50];
     char auxCuit[20];
     int auxCantDeDia;
     int auxId;
     int auxIdPan;
-    int PosIdPan;
+    int posIdPan;
     int ret = -1;
-    if(list!=NULL && len>0)
+    if(listPub!=NULL && lenPub>0)
     {
         if(utn_getValidInt("Ingrese Id pantalla: ","Error.",&auxIdPan,1,1000,2)==0)
         {
@@ -86,14 +93,14 @@ int pub_altaPublicidad(Publicidad *list,int len,Pantalla *listPan,int lenPan)
             }
             else
             {
-                if(utn_getValidString("Ingrese Cuit:","\nError.","Error, excediste el maximo de caracteres",auxCuit,12,2)==0 &&
-                utn_getValidName(auxNombre)==0 && utn_getValidInt("Ingrese cantidad de dias: ","\nError.",&auxCantDeDia,1,99999,2)==0)
+                if(utn_getValidStringNumerico("Ingrese Cuit:","\nError.","Error, excediste el maximo de caracteres",auxCuit,20,2)==0 &&
+                        utn_getValidName(auxNombre)==0 && utn_getValidInt("Ingrese cantidad de dias: ","\nError.",&auxCantDeDia,1,99999,2)==0)
                 {
-                    auxId=generarId();
-                    pub_addPublicidad(list,len,idPub,idPan,auxCantDeDia,auxCuit,auxNombre);
+                    auxId=generarIdPublicidad();
+                    pub_addPublicidad(listPub,lenPub,auxId,auxIdPan,auxCantDeDia,auxCuit,auxNombre);
                     printf("\n------------------------\n");
-                    printf("\nID de Pantalla: %d\nId Publicidad: %d\nNombre: %s\nCuit: %s\Cantidad de dias: %d\n",
-                           auxIdPan,auxId,auxNombre,auxCuit,auxCantDeDia);
+                    printf("\nID de Pantalla: %d\nId Publicidad: %d\nNombre: %s\nCuit: %s\nCantidad de dias: %d\n",
+                           listPub[posIdPan].idPan,listPub[posIdPan].idPub,listPub[posIdPan].nombreArch,listPub[posIdPan].cuit,listPub[posIdPan].cantidadDeDia);
                     ret=0;
 
                 }
@@ -104,30 +111,51 @@ int pub_altaPublicidad(Publicidad *list,int len,Pantalla *listPan,int lenPan)
     return ret;
 }
 
-int pub_printfPublicidad(Publicidad *list,int len,Pantalla *listPan,int lenPan)
+int pub_printfPublicidad(Publicidad *listPub,int lenPub,Pantalla *listPan,int lenPan)
 {
     int ret=-1;
     int i;
-    if(list!=NULL && len>0)
+    if(listPub!=NULL && lenPub>0)
     {
-        for(i=0; i<len; i++)
+        for(i=0; i<lenPub; i++)
         {
-            if(list[i].isEmpty==OCUPADO)
+            if(listPub[i].isEmpty==OCUPADO)
             {
-                pan_printfPantalla(listPan,lenPan);
-                printf("\nId Publicidad: %d\n",list[i].idPub);
-                printf("\nNombre: %s",list[i].nombre);
-                printf("\nNombre: %s",list[i].cuit);
-                printf("\nPrecio: %.2f",list[i].cantidadDeDia);
-                if(list[i].tipo==1)
+                if(listPan[i].isEmpty==OCUPADO)
                 {
-                    printf("\nTipo: LED");
+                    printf("\nId Publicidad: %d",listPub[i].idPub);
+                    pan_printfPantallaPorId(listPan,lenPan,listPub[i].idPan);
+                    printf("\nNombre: %s",listPub[i].nombreArch);
+                    printf("\nCuit: %s",listPub[i].cuit);
+                    printf("\nCantidad de dias: %d",listPub[i].cantidadDeDia);
+                    printf("\n------------------------\n");
+                    ret=0;
                 }
-                else if(list[i].tipo==2)
+            }
+        }
+    }
+    return ret;
+}
+
+int pub_printfPublicidadPorCuit(Publicidad *listPub,int lenPub,char *cuit)
+{
+    int ret=-1;
+    int i;
+    if(listPub!=NULL && lenPub>0)
+    {
+        for(i=0; i<lenPub; i++)
+        {
+            if(listPub[i].isEmpty==OCUPADO)
+            {
+                if(strncmp(listPub[i].cuit,cuit,20)==0)
                 {
-                    printf("\nTipo: LCD");
+                    printf("\nId Publicidad: %d\n",listPub[i].idPub);
+                    printf("\nId Pantalla: %d\n",listPub[i].idPan);
+                    printf("\nNombre: %s",listPub[i].nombreArch);
+                    printf("\nCuit: %s",listPub[i].cuit);
+                    printf("\nCantidad de dias: %d",listPub[i].cantidadDeDia);
+                    printf("\n------------------------\n");
                 }
-                printf("\n------------------------\n");
             }
         }
         ret=0;
@@ -135,15 +163,15 @@ int pub_printfPublicidad(Publicidad *list,int len,Pantalla *listPan,int lenPan)
     return ret;
 }
 
-int pub_buscarPublicidadPorId(Publicidad *list,int len,int id,int *posicion)
+int pub_buscarPublicidadPorId(Publicidad *listPub,int lenPub,int id,int *posicion)
 {
     int ret = -1;
     int i;
-    if(list!=NULL && len>0)
+    if(listPub!=NULL && lenPub>0)
     {
-        for(i=0; i<len; i++)
+        for(i=0; i<lenPub; i++)
         {
-            if(list[i].idPub==id)
+            if(listPub[i].idPub==id)
             {
                 ret=0;
                 *posicion=i;
@@ -154,17 +182,69 @@ int pub_buscarPublicidadPorId(Publicidad *list,int len,int id,int *posicion)
     return ret;
 }
 
-int pan_bajaPantalla(Pantalla *list,int len,int id,Pantalla *listPan,int lenPan)/*falta baj publicidad*/
+int pub_buscarPublicidadPorCuit(Publicidad *listPub,int lenPub,char *cuit,int *posicion)
+{
+    int ret = -1;
+    int i;
+    if(listPub!=NULL && lenPub>0)
+    {
+        for(i=0; i<lenPub; i++)
+        {
+            if(listPub[i].isEmpty==LIBRE)
+            {
+                continue;
+            }
+            else
+            {
+                if(strncmp(listPub[i].cuit,cuit,20)==0)
+                {
+                    ret=0;
+                    *posicion=i;
+                    break;
+                }
+            }
+        }
+    }
+    return ret;
+}
+
+int pub_buscarPublicidadPorIdPan(Publicidad *listPub,int lenPub,int idPan,int *posicion)
+{
+    int ret = -1;
+    int i;
+    if(listPub!=NULL && lenPub>0)
+    {
+        for(i=0; i<lenPub; i++)
+        {
+            if(listPub[i].isEmpty==LIBRE)
+            {
+                continue;
+            }
+            else
+            {
+                if(listPub[i].idPan==idPan)
+                {
+                    ret=0;
+                    *posicion=i;
+                    break;
+                }
+            }
+        }
+    }
+    return ret;
+}
+
+int pub_bajaPublicidad(Publicidad *listPub,int lenPub,int id)/*falta baj publicidad*/
 {
     int i;
     int ret = -1;
-    if(list!=NULL && len>0)
+    if(listPub!=NULL && lenPub>0)
     {
-        for(i=0; i<len; i++)
+        for(i=0; i<lenPub; i++)
         {
-            if(list[i].idPub==id)
+            if(listPub[i].idPub==id)
             {
-                list[i].isEmpty=LIBRE;
+                listPub[i].isEmpty=LIBRE;
             }
         }
         ret=0;
@@ -172,59 +252,95 @@ int pan_bajaPantalla(Pantalla *list,int len,int id,Pantalla *listPan,int lenPan)
     return ret;
 }
 
-int pub_modificarPublicacion(Publicacion *list, int len,int id)
+int pub_bajaPublicidadPorCuit(Publicidad *listPub,int lenPub,int idPan)/*falta baj publicidad*/
 {
+    char auxCuit[20];
+    int auxPosPan;
     int ret = -1;
-    char auxNombre[50];
-    char auxCuit[50];
-    float auxCantDeDia;
-    int opciones;
     int auxId;
     int auxPos;
-    if(utn_getValidString("Ingrese Cuit: ",char errorMessage[], char errorMessageLenght[],char input[], int maxLenght,int attemps)==0)
-    {
-        if(pan_buscarPantallaPorId(list,len,auxId,&auxPos)==-1)
-        {
-            printf("\nNo se encontro el ID");
-        }
-        else
-        {
-            do
-            {
-                if(utn_getValidInt("\n\n¿Que desea modificar?\n1-Nombre\n2-Direccion\n3-Precio\n4-Tipo\n5-Cancelar\nEliga la opcion: ",
-                                   "Error",&opciones,1,5,2)==0)
-                {
-                    switch(opciones)
-                    {
-                    case 1:
-                        utn_getValidString("\nIngrese nuevo nombre: ","\nError","\nError, excediste el maximo de caracteres.",auxNombre,50,2);
-                        strncpy(list[auxPos].nombre,auxNombre,50);
-                        printf("%s-------------------------\n",list[auxPos].nombre);
-                        break;
-                    case 2:
-                        utn_getValidStringAlfaNumerico("Ingrese direccion: ","\nError.","\nError, excediste el maximo de caracteres.",auxDireccion,50,2);
-                        strncpy(list[auxPos].direccion,auxDireccion,50);
-                        printf("%s-------------------------\n",list[auxPos].direccion);
-                        break;
-                    case 3:
-                        utn_getValidFloat("Ingrese Precio: ","\nError.",&auxPrecio,0,99999,2);
-                        list[auxPos].precio=auxPrecio;
-                        break;
-                    case 4:
-                        utn_getValidInt("\nTipo de Pantalla\n1.LED\n2.LCD\nIngrese opcion:  ","\nError",&auxTipo,1,130,3);
-                        list[auxPos].tipo=auxTipo;
-                        break;
-                    case 5:
-                        break;
-                    default :
-                        printf("No es una opcion");
-                        break;
-                    }
-                }
-            }while(opciones!=5);
-        }
 
-        ret=0;
+    if(listPub!=NULL && lenPub>0)
+    {
+        if(utn_getValidStringNumerico("Ingrese Cuit:","\nError.","Error, excediste el maximo de caracteres",auxCuit,20,2)==0)
+        {
+            if(pub_buscarPublicidadPorCuit(listPub,lenPub,auxCuit,&auxPos)==-1)
+            {
+                printf("\nNo se encontro el Cuit");
+            }
+            else
+            {
+                pub_printfPublicidadPorCuit(listPub,lenPub,auxCuit);
+                if(utn_getValidInt("Ingrese id Pantalla: ","Error",&auxId,1,99999,2)==0)
+                {
+                    if(pub_buscarPublicidadPorIdPan(listPub,lenPub,auxId,&auxPosPan)==-1)
+                    {
+                        printf("\nNo se encontro el ID");
+                    }
+                else
+                {
+                    listPub[auxPosPan].isEmpty=LIBRE;
+                }
+            }
+            ret=0;
+        }
+    }
+
     }
     return ret;
 }
+
+int pub_modificarPublicacion(Publicidad *listPub, int lenPub,int id)
+{
+    int ret = -1;
+    char auxCuit[20];
+    int auxCantDeDia;
+    int opciones;
+    int auxIdPan;
+    int auxPos;
+    int auxPosPan;
+    if(utn_getValidStringNumerico("Ingrese Cuit: ","Error","Error, excediste el maximo de caracteres",auxCuit,20,2)==0)
+    {
+        if(pub_buscarPublicidadPorCuit(listPub,lenPub,auxCuit,&auxPos)==-1)
+        {
+            printf("\nNo se encontro el Cuit");
+        }
+        else
+        {
+            pub_printfPublicidadPorCuit(listPub,lenPub,auxCuit);
+            if(utn_getValidInt("Ingrese id Pantalla: ","Error",&auxIdPan,1,99999,2)==0)
+            {
+                if(pub_buscarPublicidadPorIdPan(listPub,lenPub,auxIdPan,&auxPosPan)==-1)
+                {
+                    printf("\nNo se encontro el ID");
+                }
+                else
+                {
+                    do
+                    {
+                        if(utn_getValidInt("\n\n¿Que desea modificar?\n1-Cantidad de dias: \n2-Cancelar\nEliga la opcion: ",
+                                           "Error",&opciones,1,2,2)==0)
+                        {
+                            switch(opciones)
+                            {
+                            case 1:
+                                utn_getValidInt("\nIngrese cantidad de dias: ","\nError",&auxCantDeDia,1,99999,2);
+                                listPub[auxPosPan].cantidadDeDia=auxCantDeDia;
+                                break;
+                            case 2:
+                                break;
+                            default :
+                                printf("No es una opcion");
+                                break;
+                            }
+                        }
+                    }
+                    while(opciones!=2);
+                    ret=0;
+                }
+            }
+        }
+    }
+    return ret;
+}
+
