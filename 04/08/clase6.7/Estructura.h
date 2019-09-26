@@ -15,7 +15,7 @@ int per_initPersona(Persona *list,int len);
 int per_buscarLugarLibre(Persona *list,int len);
 int per_addPersona(Persona *list, int len, int id, char *name,char *lastName,int edad,char *dni);
 int per_altaPersona(Persona *list,int len);
-int buscarPersonaPorId(Persona *list,int len,int id);
+int buscarPersonaPorId(Persona *list,int len,int id,int *posicion);
 int bajaPersona(Persona *list,int len,int id);
 int per_printfPersonas(Persona *list,int len);
 int per_ordenarPorEdad(Persona *list,int len);

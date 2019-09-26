@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
 #include "utn.h"
-#include "Estructura.h"
-#define OCUPADO 1
+#include "Pantalla.h"
 #define LIBRE 0
+#define OCUPADO 1
+
 static int generarId(void);
 
-int per_initPersona(Persona *list,int len)
+int pan_initPantalla(Pantalla *list,int len)
 {
     int ret = -1;
     int i;
@@ -23,7 +23,7 @@ int per_initPersona(Persona *list,int len)
     return ret;
 }
 
-int per_buscarLugarLibre(Persona *list,int len)
+int pan_buscarLugarLibre(Pantalla *list,int len)
 {
     int ret = -1;
     int i;
@@ -41,22 +41,22 @@ int per_buscarLugarLibre(Persona *list,int len)
     return ret;
 }
 
-int per_addPersona(Persona *list, int len, int id, char *name,char *lastName,int edad,char *dni)
+int pan_addPantalla(Pantalla *list, int len, int idPan, char *name,char *adress,float precio,int tipo)
 {
     int retorno=-1;
     int posLibre;
 
-    posLibre=per_buscarLugarLibre(list,len);
+    posLibre=pan_buscarLugarLibre(list,len);
     if(list!=NULL && len>0)
     {
         if(posLibre!=-1)
         {
             strncpy(list[posLibre].nombre,name,50);
-            strncpy(list[posLibre].apellido,lastName,50);
-            strncpy(list[posLibre].dni,dni,10);
-            list[posLibre].edad=edad;
+            strncpy(list[posLibre].direccion,adress,50);
+            list[posLibre].tipo=tipo;
+            list[posLibre].precio=precio;
             list[posLibre].isEmpty=OCUPADO;
-            list[posLibre].id=id;
+            list[posLibre].idPan=idPan;
         }
         retorno=0;
     }
@@ -67,25 +67,34 @@ int per_addPersona(Persona *list, int len, int id, char *name,char *lastName,int
     return retorno;
 }
 
-int per_altaPersona(Persona *list,int len)
+int pan_altaPantalla(Pantalla *list,int len)
 {
-    char auxName[50];
-    char auxLastName[50];
-    int auxEdad;
-    char auxDni[50];
+    char auxNombre[50];
+    char auxDireccion[50];
+    int auxTipo;
+    float auxPrecio;
     int auxId;
     int ret = -1;
     if(list!=NULL && len>0)
     {
-        if(utn_getValidName(auxName)==0 && utn_getValidLastName(auxLastName)==0 &&
-                utn_getValidInt("Ingrese edad: ","\nERROR, no es una edad.",&auxEdad,0,130,2)==0 &&
-                utn_getValidStringNumerico("Ingrese Dni: ","\nError.","\nError, superaste el largo de caracteres.\n",auxDni,8,2)==0)
+        if(utn_getValidName(auxNombre)==0 &&
+            utn_getValidStringAlfaNumerico("Ingrese direccion: ","\nError.","\nError, excediste el maximo de caracteres.",auxDireccion,50,2)==0 &&
+            utn_getValidFloat("Ingrese Precio: ","\nError.",&auxPrecio,0,99999,2)==0 &&
+            utn_getValidInt("Tipo de pantalla\n1.LED\n2.LCD\nIngrese opcion: ","\nERROR, un tipo de pantalla.",&auxTipo,1,2,2)==0)
         {
             auxId=generarId();
-            per_addPersona(list,len,auxId,auxName,auxLastName,auxEdad,auxDni);
+            pan_addPantalla(list,len,auxId,auxNombre,auxDireccion,auxPrecio,auxTipo);
             printf("\n------------------------\n");
-            printf("\nID de Persona: %d\nNombre: %s\nApellido: %s\nEdad: %d\nDni: %s\n",
-                   auxId,auxName,auxLastName,auxEdad,auxDni);
+            printf("\nID de Pantalla: %d\nNombre: %s\nDireccion: %s\nPrecio: %.2f\n",
+                   auxId,auxNombre,auxDireccion,auxPrecio);
+                if(auxTipo==1)
+                {
+                    printf("Tipo: LED");
+                }
+                else if(auxTipo==2)
+                {
+                    printf("Tipo: LCD");
+                }
             ret=0;
 
         }
@@ -93,7 +102,7 @@ int per_altaPersona(Persona *list,int len)
     return ret;
 }
 
-int per_printfPersonas(Persona *list,int len)
+int pan_printfPantalla(Pantalla *list,int len)
 {
     int ret=-1;
     int i;
@@ -104,10 +113,17 @@ int per_printfPersonas(Persona *list,int len)
             if(list[i].isEmpty==OCUPADO)
             {
                 printf("\nNombre: %s",list[i].nombre);
-                printf("\nNombre: %s",list[i].apellido);
-                printf("\nEdad: %d",list[i].edad);
-                printf("\nDni: %s",list[i].dni);
-                printf("\nId: %d\n",list[i].id);
+                printf("\nNombre: %s",list[i].direccion);
+                printf("\nPrecio: %.2f",list[i].precio);
+                printf("\nId Pantalla: %d\n",list[i].idPan);
+                if(list[i].tipo==1)
+                {
+                    printf("\nTipo: LED");
+                }
+                else if(list[i].tipo==2)
+                {
+                    printf("\nTipo: LCD");
+                }
                 printf("\n------------------------\n");
             }
         }
@@ -116,7 +132,7 @@ int per_printfPersonas(Persona *list,int len)
     return ret;
 }
 
-int buscarPersonaPorId(Persona *list,int len,int id,int *posicion)
+int pan_buscarPantallaPorId(Pantalla *list,int len,int id,int *posicion)
 {
     int ret = -1;
     int i;
@@ -124,7 +140,7 @@ int buscarPersonaPorId(Persona *list,int len,int id,int *posicion)
     {
         for(i=0; i<len; i++)
         {
-            if(list[i].id==id)
+            if(list[i].idPan==id)
             {
                 ret=0;
                 *posicion=i;
@@ -135,7 +151,7 @@ int buscarPersonaPorId(Persona *list,int len,int id,int *posicion)
     return ret;
 }
 
-int bajaPersona(Persona *list,int len,int id)
+int pan_bajaPantalla(Pantalla *list,int len,int id)/*falta baj publicidad*/
 {
     int i;
     int ret = -1;
@@ -143,7 +159,7 @@ int bajaPersona(Persona *list,int len,int id)
     {
         for(i=0; i<len; i++)
         {
-            if(list[i].id==id)
+            if(list[i].idPan==id)
             {
                 list[i].isEmpty=LIBRE;
             }
@@ -153,19 +169,19 @@ int bajaPersona(Persona *list,int len,int id)
     return ret;
 }
 
-int modificarPersona(Persona *list, int len,int id)
+int pan_modificarPantalla(Pantalla *list, int len,int id)
 {
     int ret = -1;
-    char nuevoNombre[50];
-    char nuevoApellido[51];
-    int nuevaEdad;
-    char nuevoDni[10];
+    char auxNombre[50];
+    char auxDireccion[50];
+    float auxPrecio;
+    int auxTipo;
     int opciones;
     int auxId;
     int auxPos;
     if(utn_getValidInt("\nIngrese el id: ","\nError, repuesta incorrecta.",&auxId,1,99999,2)==0)
     {
-        if(buscarPersonaPorId(list,len,auxId,&auxPos)==-1)
+        if(pan_buscarPantallaPorId(list,len,auxId,&auxPos)==-1)
         {
             printf("\nNo se encontro el ID");
         }
@@ -173,28 +189,28 @@ int modificarPersona(Persona *list, int len,int id)
         {
             do
             {
-                if(utn_getValidInt("\n\nQue desea modificar?\n1-Modificar nombre\n2-Modificar Apellido\n3-Edad\n4-Dni\n5-Cancelar\nEliga la opcion: ",
+                if(utn_getValidInt("\n\n¿Que desea modificar?\n1-Nombre\n2-Direccion\n3-Precio\n4-Tipo\n5-Cancelar\nEliga la opcion: ",
                                    "Error",&opciones,1,5,2)==0)
                 {
                     switch(opciones)
                     {
                     case 1:
-                        utn_getValidString("\nIngrese nuevo nombre: ","\nError","\nError, excediste el maximo de caracteres.",nuevoNombre,50,2);
-                        strncpy(list[auxPos].nombre,nuevoNombre,50);
+                        utn_getValidString("\nIngrese nuevo nombre: ","\nError","\nError, excediste el maximo de caracteres.",auxNombre,50,2);
+                        strncpy(list[auxPos].nombre,auxNombre,50);
                         printf("%s-------------------------\n",list[auxPos].nombre);
                         break;
                     case 2:
-                        utn_getValidString("\nIngrese nuevo Apellido: ","\nError","\nError, excediste el maximo de caracteres.",nuevoApellido,50,2);
-                        strncpy(list[auxPos].apellido,nuevoApellido,50);
-                        printf("%s-------------------------\n",list[auxPos].apellido);
+                        utn_getValidStringAlfaNumerico("Ingrese direccion: ","\nError.","\nError, excediste el maximo de caracteres.",auxDireccion,50,2);
+                        strncpy(list[auxPos].direccion,auxDireccion,50);
+                        printf("%s-------------------------\n",list[auxPos].direccion);
                         break;
                     case 3:
-                        utn_getValidInt("\nIngrese edad: ","\nError",&nuevaEdad,1,130,3);
-                        list[auxPos].edad=nuevaEdad;
+                        utn_getValidFloat("Ingrese Precio: ","\nError.",&auxPrecio,0,99999,2);
+                        list[auxPos].precio=auxPrecio;
                         break;
                     case 4:
-                        utn_getValidStringNumerico("Ingrese Dni: ","\nError.","\nError, superaste el largo de caracteres.\n",nuevoDni,8,2);
-                        strncpy(list[auxPos].dni,nuevoDni,10);
+                        utn_getValidInt("\nTipo de Pantalla\n1.LED\n2.LCD\nIngrese opcion:  ","\nError",&auxTipo,1,130,3);
+                        list[auxPos].tipo=auxTipo;
                         break;
                     case 5:
                         break;
@@ -271,21 +287,21 @@ if(list!=NULL && len>0)
 return ret;*/
 
 
-int menu(Persona *list,int len)
+int menu(Pantalla *list,int len)
 {
-    per_initPersona(list,len);
+    pan_initPantalla(list,len);
     int opciones;
     int auxId;
     int auxPos;
     do
     {
         printf("\n------------------------\n");
-        if(utn_getValidInt("\n1-Alta\n2-Baja\n3-Modificar\n4-Mostrar\n5-Ordenar\n6-Salir\nIngrese opcion: ","Error",&opciones,1,6,3)==0)
+        if(utn_getValidInt("\n1-Alta\n2-Modificar\n3-Baja\n4-Mostrar\n5-Salir\nIngrese opcion: ","Error",&opciones,1,5,3)==0)
         {
             switch(opciones)
             {
             case 1:
-                if(per_altaPersona(list,len)==0)
+                if(pan_altaPantalla(list,len)==0)
                 {
                     printf("\n------------------------\n");
                     printf("\n\tALTA EXITOSA\n");
@@ -296,23 +312,8 @@ int menu(Persona *list,int len)
                 }
                 break;
             case 2:
-                per_printfPersonas(list,len);
-                if(utn_getValidInt("\nIngrese id: ","ERROR",&auxId,1,1000,2)==0)
-                {
-                    if(buscarPersonaPorId(list,len,auxId,&auxPos)!=-1)
-                    {
-                        bajaPersona(list,len,auxId);
-                        printf("\nBAJA EXITOSA\n");
-                    }
-                    else
-                    {
-                        printf("\nNO EXISTE ID.");
-                    }
-                }
-                break;
-            case 3:
-                per_printfPersonas(list,len);
-                if(modificarPersona(list,len,auxId)==0)
+                pan_printfPantalla(list,len);
+                if(pan_modificarPantalla(list,len,auxId)==0)
                 {
                     printf("\nModificacion exitosa");
                 }
@@ -321,12 +322,26 @@ int menu(Persona *list,int len)
                     printf("\nNO EXISTE ID.");
                 }
                 break;
+            case 3:
+
+                pan_printfPantalla(list,len);
+                if(utn_getValidInt("\nIngrese id: ","ERROR",&auxId,1,1000,2)==0)
+                {
+                    if(pan_buscarPantallaPorId(list,len,auxId,&auxPos)!=-1)
+                    {
+                        pan_bajaPantalla(list,len,auxId);
+                        printf("\nBAJA EXITOSA\n");
+                    }
+                    else
+                    {
+                        printf("\nNO EXISTE ID.");
+                    }
+                }
+                break;
             case 4:
-                per_printfPersonas(list,len);
+                pan_printfPantalla(list,len);
                 break;
             case 5:
-                break;
-            case 6:
                 break;
             default:
                 printf("opcion incorrecta.");
@@ -335,50 +350,9 @@ int menu(Persona *list,int len)
 
         }
     }
-    while(opciones!=6);
+    while(opciones!=5);
 
     return 0;
-}
-
-int per_ordenarPorEdad(Persona *list,int len)
-{
-    int ret = -1;
-    char aux[50];
-    int auxInt;
-    int i,j;
-    if(list!=NULL && len>0)
-    {
-        for(i=0; i<len-1; i++)
-        {
-            for(j=i+1; j<len; j++)
-            {
-                if(list[i].edad>list[j].edad)
-                {
-                    auxInt=list[i].edad;
-                    list[i].edad=list[j].edad;
-                    list[j].edad=auxInt;
-
-                    strncpy(aux,list[i].nombre,50); /*aux=list[i].nombre....nombre,edad,dni*/
-                    strncpy(list[i].nombre,list[j].nombre,50);
-                    strncpy(list[j].nombre,aux,50);
-
-                    strncpy(aux,list[i].apellido,50); /*aux=list[i].nombre....nombre,edad,dni*/
-                    strncpy(list[i].apellido,list[j].apellido,50);
-                    strncpy(list[j].apellido,aux,50);
-
-                    strcpy(aux,list[i].dni);
-                    strcpy(list[i].dni,list[j].dni);
-                    strcpy(list[j].dni,aux);
-
-                    auxInt=list[i].id;
-                    list[i].id=list[j].id;
-                    list[j].id=auxInt;
-                }
-            }
-        }
-        ret = 0;
-    }
-    return ret;
 }
 
 static int generarId(void)
