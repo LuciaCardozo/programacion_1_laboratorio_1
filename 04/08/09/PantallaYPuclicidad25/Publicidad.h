@@ -23,7 +23,9 @@ int pub_modificarPublicacion(Publicidad *listPub, int lenPub,int id);
 int pub_buscarPublicidadPorIdPan(Publicidad *listPub,int lenPub,int idPan,int *posicion);
 int pub_buscarPublicidadPorCuit(Publicidad *listPub,int lenPub,char *cuit,int *posicion);
 int pub_printfPublicidadPorCuit(Publicidad *listPub,int lenPub,char *cuit);
-int pub_bajaPublicidadPorCuit(Publicidad *listPub,int lenPub,int idPan);
+int pub_bajaPublicidadPorCuit(Publicidad *listPub,int lenPub);
+int consultaFacturacionPorCuit(Publicidad *listPub,int lenPub,Pantalla *listPan,int lenPan);
+int pub_printfContrataciones(Publicidad *listPub,int lenPub,Pantalla *listPan,int lenPan);
+int clienteConImporteMasAlto(Publicidad *listPub,int lenPub,Pantalla *listPan,int lenPan);
 
-
-#endif // PUBLICIDAD_H_INCLUDED
+#endif /* PUBLICIDAD_H_INCLUDED*/

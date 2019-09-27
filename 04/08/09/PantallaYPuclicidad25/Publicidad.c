@@ -252,7 +252,7 @@ int pub_bajaPublicidad(Publicidad *listPub,int lenPub,int id)/*falta baj publici
     return ret;
 }
 
-int pub_bajaPublicidadPorCuit(Publicidad *listPub,int lenPub,int idPan)/*falta baj publicidad*/
+int pub_bajaPublicidadPorCuit(Publicidad *listPub,int lenPub)/*falta baj publicidad*/
 {
     char auxCuit[20];
     int auxPosPan;
@@ -344,3 +344,110 @@ int pub_modificarPublicacion(Publicidad *listPub, int lenPub,int id)
     return ret;
 }
 
+int consultaFacturacionPorCuit(Publicidad *listPub,int lenPub,Pantalla *listPan,int lenPan)
+{
+    char auxCuit[20];
+    int ret = -1;
+    int auxPos;
+    float auxPrecio;
+    float auxCantDia;
+    float importe;
+    if(listPub!=NULL && lenPub>0)
+    {
+        if(utn_getValidStringNumerico("Ingrese Cuit:","\nError.","Error, excediste el maximo de caracteres",auxCuit,20,2)==0)
+        {
+            if(pub_buscarPublicidadPorCuit(listPub,lenPub,auxCuit,&auxPos)==-1)
+            {
+                printf("\nNo se encontro el Cuit");
+            }
+            else
+            {
+                auxCantDia=listPub[auxPos].cantidadDeDia;
+                auxPrecio=listPan[auxPos].precio;
+                importe=auxCantDia*auxPrecio;
+                printf("\nImporte a pagar: %.2f",importe);
+                ret = 0;
+            }
+        }
+    }
+    return ret;
+}
+
+int pub_printfContrataciones(Publicidad *listPub,int lenPub,Pantalla *listPan,int lenPan)
+{
+    int ret=-1;
+    int i;
+    float auxCantDia;
+    float auxPrecio;
+    float importe;
+    int auxIdPan;
+    if(listPub!=NULL && lenPub>0)
+    {
+        for(i=0; i<lenPub; i++)
+        {
+            if(listPub[i].isEmpty==OCUPADO)
+            {
+                if(listPan[i].isEmpty==OCUPADO)
+                {
+                    auxCantDia=listPub[i].cantidadDeDia;
+                    auxPrecio=listPan[i].precio;
+                    auxIdPan=listPub[i].idPan;
+                    importe=auxCantDia*auxPrecio;
+                    printf("\nId Publicidad: %d",listPub[i].idPub);
+                    pan_printfPantallaPorId(listPan,lenPan,auxIdPan);
+                    printf("\nNombre: %s",listPub[i].nombreArch);
+                    printf("\nCuit: %s",listPub[i].cuit);
+                    printf("\nCantidad de dias: %d",listPub[i].cantidadDeDia);
+                    printf("\nImporte a pagar: %.2f",importe);
+                    printf("\n------------------------\n");
+                    ret=0;
+                }
+            }
+        }
+    }
+    return ret;
+}
+
+int clienteConImporteMasAlto(Publicidad *listPub,int lenPub,Pantalla *listPan,int lenPan)
+{
+    int ret = -1;
+    int i;
+    float mayorImporte=0;
+    float auxCantDia;
+    float auxPrecio;
+    float importe;
+    int auxIdPan;
+    if(listPub!=NULL && lenPub>0)
+    {
+        for(i=0;i<lenPub;i++)
+        {
+            if(listPub[i].isEmpty==OCUPADO)
+            {
+                if(listPan[i].isEmpty==OCUPADO)
+                {
+                    auxCantDia=listPub[i].cantidadDeDia;
+                    auxPrecio=listPan[i].precio;
+                    importe=auxCantDia*auxPrecio;
+                    auxIdPan=listPub[i].idPan;
+                    if(mayorImporte==importe)
+                    {
+                        if(importe>mayorImporte)
+                        {
+                            mayorImporte=importe;
+                            printf("\nId Publicidad: %d",listPub[i].idPub);
+                            pan_printfPantallaPorId(listPan,lenPan,auxIdPan);
+                            printf("\nNombre: %s",listPub[i].nombreArch);
+                            printf("\nCuit: %s",listPub[i].cuit);
+                            printf("\nCantidad de dias: %d",listPub[i].cantidadDeDia);
+                            printf("\nImporte mayor a Facturar: %.2f",mayorImporte);
+                            printf("\n------------------------\n");
+                            break;
+                            ret=0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return ret;
+}

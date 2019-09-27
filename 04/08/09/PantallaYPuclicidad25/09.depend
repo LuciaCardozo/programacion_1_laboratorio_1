@@ -1,28 +1,31 @@
 # depslib dependency file v1.0
-1569454103 source:/home/alumno/programacion_1_laboratorio_1/04/08/09/PantallaYPuclicidad25/main.c
+1569533253 source:/home/alumno/programacion_1_laboratorio_1/04/08/09/PantallaYPuclicidad25/main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"utn.h"
 	"Pantalla.h"
+	"Publicidad.h"
+	"SubMenuYMenu.h"
 
 1568463233 /home/alumno/programacion_1_laboratorio_1/04/08/09/PantallaYPuclicidad25/utn.h
 
-1569453902 /home/alumno/programacion_1_laboratorio_1/04/08/09/PantallaYPuclicidad25/Pantalla.h
+1569533253 /home/alumno/programacion_1_laboratorio_1/04/08/09/PantallaYPuclicidad25/Pantalla.h
 
-1569454396 source:/home/alumno/programacion_1_laboratorio_1/04/08/09/PantallaYPuclicidad25/Pantalla.c
+1569533253 source:/home/alumno/programacion_1_laboratorio_1/04/08/09/PantallaYPuclicidad25/Pantalla.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"utn.h"
 	"Pantalla.h"
 
-1569453878 source:/home/alumno/programacion_1_laboratorio_1/04/08/09/PantallaYPuclicidad25/Publicidad.c
+1569538736 source:/home/alumno/programacion_1_laboratorio_1/04/08/09/PantallaYPuclicidad25/Publicidad.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"utn.h"
 	"Pantalla.h"
+	"Publicidad.h"
 
 1568843577 source:/home/alumno/programacion_1_laboratorio_1/04/08/09/PantallaYPuclicidad25/utn.c
 	<stdio.h>
@@ -71,6 +74,19 @@
 	"Publicidad.h"
 
 1569529376 source:c:\users\lucia\desktop\laboratorio1ºe\programacion_1_laboratorio_1\04\08\09\pantallaypuclicidad25\submenuymenu.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"Pantalla.h"
+	"Publicidad.h"
+	"SubMenuYMenu.h"
+
+1569537384 /home/alumno/programacion_1_laboratorio_1/04/08/09/PantallaYPuclicidad25/Publicidad.h
+
+1569533324 /home/alumno/programacion_1_laboratorio_1/04/08/09/PantallaYPuclicidad25/SubMenuYMenu.h
+
+1569537758 source:/home/alumno/programacion_1_laboratorio_1/04/08/09/PantallaYPuclicidad25/SubMenuYMenu.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

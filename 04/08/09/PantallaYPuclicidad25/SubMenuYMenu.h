@@ -4,4 +4,4 @@
 int menu(Pantalla *listPan,int lenPan,Publicidad *listPub,int lenPub);
 int subMenuPantalla();
 
-#endif // SUBMENUYMENU_H_INCLUDED
+#endif /* SUBMENUYMENU_H_INCLUDED*/

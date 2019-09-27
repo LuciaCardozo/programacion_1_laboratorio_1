@@ -86,7 +86,7 @@ int menu(Pantalla *listPan,int lenPan,Publicidad *listPub,int lenPub)
                 }
                 break;
             case 6:
-                if(pub_bajaPublicidadPorCuit(listPub,lenPub,auxId)==0)
+                if(pub_bajaPublicidadPorCuit(listPub,lenPub)==0)
                 {
                     printf("Baja exitosa");
                 }
@@ -96,6 +96,14 @@ int menu(Pantalla *listPan,int lenPan,Publicidad *listPub,int lenPub)
                 }
                 break;
             case 7:
+                if(consultaFacturacionPorCuit(listPub,lenPub,listPan,lenPan)!=-1)
+                {
+                    printf("\nFacturaciones Totales");
+                }
+                else
+                {
+                    printf("Error");
+                }
                 break;
             case 8:
                 if(pub_printfPublicidad(listPub,lenPub,listPan,lenPan)==0)
@@ -118,8 +126,10 @@ int menu(Pantalla *listPan,int lenPan,Publicidad *listPub,int lenPub)
                 }
                 break;
             case 10:
+                pub_printfContrataciones(listPub,lenPub,listPan,lenPan);
                 break;
             case 11:
+                /*clienteConImporteMasAlto(listPub,lenPub,listPan,lenPan);Falta terminar*/
                 break;
             case 12:
                 break;
@@ -144,8 +154,9 @@ int subMenuPantalla()
     printf("\n7.Consulta facturacion");
     printf("\n8.Listar contrataciones");
     printf("\n9.Listar pantallas");
-    printf("\n10.Informar");
-    printf("\n11.Salir");
+    printf("\n10.Informar contrataciones");
+    printf("\n11.Informar cliente con mayor importe");
+    printf("\n12.Salir");
     printf("\nIngrese Opcion: ");
     fflush(stdin);
     scanf("%d",&opciones);
