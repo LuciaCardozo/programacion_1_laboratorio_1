@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1569508204 source:d:\lezamaverde\laboratorio1\clasew 11 26-9(estacionamiento)\main.c
+	"labibliopa.h"
+
+1569508227 source:d:\lezamaverde\laboratorio1\clasew 11 26-9(estacionamiento)\labibliopa.c
+	"labibliopa.h"
+
+1569508204 d:\lezamaverde\laboratorio1\clasew 11 26-9(estacionamiento)\labibliopa.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1569508204 source:z:\clase 11 26-9(estacionamiento)\ejercicio\main.c
+	"labibliopa.h"
+
+1569508204 z:\clase 11 26-9(estacionamiento)\ejercicio\labibliopa.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1569596396 source:z:\clase 11 26-9(estacionamiento)\ejercicio\labibliopa.c
+	"labibliopa.h"
+

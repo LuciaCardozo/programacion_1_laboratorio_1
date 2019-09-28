@@ -19,6 +19,5 @@ int asoc_printfAsociadosPorId(Asociados *listAsoc,int lenAsoc,int id);
 int asoc_buscarAsociadoPorId(Asociados *listAsoc,int lenAsoc,int id,int *posicion);
 int asoc_bajaAsociado(Asociados *listAsoc,int lenAsoc,int id);
 int asoc_modificarAsociado(Asociados *listAsoc, int lenAsoc,int id);
-int menu(Asociados *listAsoc,int lenAsoc);;
 
 #endif /*ASOCIADOS_H_INCLUDED*/

@@ -1,30 +1,32 @@
 # depslib dependency file v1.0
-1569546548 source:/home/alumno/programacion_1_laboratorio_1/04/08/Emergencia/Asociados.c
+1569679611 source:/home/alumno/programacion_1_laboratorio_1/04/08/Emergencia/Asociados.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"Asociados.h"
 	"utn.h"
 
-1569546076 /home/alumno/programacion_1_laboratorio_1/04/08/Emergencia/Asociados.h
+1569679758 /home/alumno/programacion_1_laboratorio_1/04/08/Emergencia/Asociados.h
 
 1568463233 /home/alumno/programacion_1_laboratorio_1/04/08/Emergencia/utn.h
 
-1569542195 source:/home/alumno/programacion_1_laboratorio_1/04/08/Emergencia/Llamadas.c
+1569683199 source:/home/alumno/programacion_1_laboratorio_1/04/08/Emergencia/Llamadas.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Llamadas.h"
+	"Asociados.h"
+	"utn.h"
+
+1569682688 /home/alumno/programacion_1_laboratorio_1/04/08/Emergencia/Llamadas.h
+	"Asociados.h"
+
+1569680918 source:/home/alumno/programacion_1_laboratorio_1/04/08/Emergencia/main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"Asociados.h"
 	"Llamadas.h"
-	"utn.h"
-
-1569542285 /home/alumno/programacion_1_laboratorio_1/04/08/Emergencia/Llamadas.h
-
-1569546308 source:/home/alumno/programacion_1_laboratorio_1/04/08/Emergencia/main.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	"Asociados.h"
 	"utn.h"
 
 1568843577 source:/home/alumno/programacion_1_laboratorio_1/04/08/Emergencia/utn.c

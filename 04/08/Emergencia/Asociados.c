@@ -62,7 +62,7 @@ int asoc_addAsociados(Asociados *listAsoc, int lenAsoc, int id, char *nombre,cha
     }
     else
     {
-        printf("ERROR en los datos de parametro 'addPersona'\n");
+        printf("ERROR en los datos de parametro 'addAsociado'\n");
     }
     return retorno;
 }
@@ -108,7 +108,7 @@ int asoc_printfAsociados(Asociados *listAsoc,int lenAsoc)
                 printf("\nNombre: %s",listAsoc[i].nombre);
                 printf("\nApellido: %s",listAsoc[i].apellido);
                 printf("\nDni: %s",listAsoc[i].dni);
-                printf("\Edad: %d",listAsoc[i].edad);
+                printf("\nEdad: %d",listAsoc[i].edad);
                 printf("\n------------------------\n");
                 ret=0;
             }
@@ -133,7 +133,7 @@ int asoc_printfAsociadosPorId(Asociados *listAsoc,int lenAsoc,int id)
                     printf("\nNombre: %s",listAsoc[i].nombre);
                     printf("\nNombre: %s",listAsoc[i].apellido);
                     printf("\nDni: %s",listAsoc[i].dni);
-                    printf("\Edad: %d",listAsoc[i].edad);
+                    printf("\nEdad: %d",listAsoc[i].edad);
                     ret=0;
                 }
             }
@@ -169,12 +169,16 @@ int asoc_bajaAsociado(Asociados *listAsoc,int lenAsoc,int id)/*falta baj publici
     {
         for(i=0; i<lenAsoc; i++)
         {
-            if(listAsoc[i].idAsociado==id)
+            if(listAsoc[i].isEmpty==OCUPADO)
             {
-                listAsoc[i].isEmpty=LIBRE;
+                if(listAsoc[i].idAsociado==id)
+                {
+                    listAsoc[i].isEmpty=LIBRE;
+                    ret=0;
+                }
+
             }
         }
-        ret=0;
     }
     return ret;
 }
@@ -226,71 +230,6 @@ int asoc_modificarAsociado(Asociados *listAsoc, int lenAsoc,int id)
     }
     return ret;
 }
-
-int menu(Asociados *listAsoc,int lenAsoc)
-{
-    asoc_initAsociados(listAsoc,lenAsoc);
-    int auxId;
-    int auxPosId;
-    int opciones;
-    if(listAsoc!=NULL && lenAsoc>0)
-    {
-        do
-        {
-            if(utn_getValidInt("\n1-Alta del asociado\n2-Modificar datos del asociado\n3-Baja del asociado\n4-Mostrar\n5-Salir\nIngrese opcion: ","\nError.",
-             &opciones,1,5,2)==0)
-             {
-                switch(opciones)
-                {
-                    case 1:
-                        if(asoc_altaAsociados(listAsoc,lenAsoc)==0)
-                        {
-                            printf("\nAlta exitosa");
-                        }
-                        else
-                        {
-                            printf("\nError, no pudo dar la alta");
-                        }
-                        break;
-                    case 2:
-                        asoc_printfAsociados(listAsoc,lenAsoc);
-                        if(asoc_modificarAsociado(listAsoc,lenAsoc,auxId)==0)
-                        {
-                            printf("\nModificacion Exitosa");
-                        }
-                        else
-                        {
-                            printf("\nError");
-                        }
-                        break;
-                    case 3:
-                        asoc_printfAsociados(listAsoc,lenAsoc);
-                        if(utn_getValidInt("\nIngrese Id: ","\nError.",&auxId,1,99999,2)==0)
-                        {
-                            if(asoc_buscarAsociadoPorId(listAsoc,lenAsoc,auxId,&auxPosId)==0)
-                            {
-                                asoc_bajaAsociado(listAsoc,lenAsoc,auxPosId);
-                            }
-                            else
-                            {
-                                printf("Id no existe");
-                            }
-                        }
-                        break;
-                    case 4:
-                        asoc_printfAsociados(listAsoc,lenAsoc);
-                        break;
-                    case 5:
-                        break;
-                    default:
-                    printf("\nOpcion incorrecta");
-                }
-             }
-        }while(opciones!=5);
-    }
-    return 0;
-}
-
 
 static int generarIdAsociados(void)
 {
