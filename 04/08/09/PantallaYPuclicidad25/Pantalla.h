@@ -20,5 +20,6 @@ int pan_buscarPantallaPorId(Pantalla *listPan,int lenPan,int id,int *posicion);
 int pan_bajaPantalla(Pantalla *listPan,int lenPan,int id);
 int pan_modificarPantalla(Pantalla *listPan, int lenPan,int id);
 int pan_printfPantallaPorId(Pantalla *listPan,int lenPan,int id);
+int generarId(void);
 
 #endif /* PANTALLA_H_INCLUDED */

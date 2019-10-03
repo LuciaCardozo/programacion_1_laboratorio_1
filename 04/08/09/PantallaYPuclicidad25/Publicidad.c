@@ -97,10 +97,9 @@ int pub_altaPublicidad(Publicidad *listPub,int lenPub,Pantalla *listPan,int lenP
                         utn_getValidName(auxNombre)==0 && utn_getValidInt("Ingrese cantidad de dias: ","\nError.",&auxCantDeDia,1,99999,2)==0)
                 {
                     auxId=generarIdPublicidad();
-                    pub_addPublicidad(listPub,lenPub,auxId,auxIdPan,auxCantDeDia,auxCuit,auxNombre);
+                    pub_addPublicidad(listPub,lenPub,auxId,posIdPan,auxCantDeDia,auxCuit,auxNombre);
                     printf("\n------------------------\n");
-                    printf("\nID de Pantalla: %d\nId Publicidad: %d\nNombre: %s\nCuit: %s\nCantidad de dias: %d\n",
-                           listPub[posIdPan].idPan,listPub[posIdPan].idPub,listPub[posIdPan].nombreArch,listPub[posIdPan].cuit,listPub[posIdPan].cantidadDeDia);
+
                     ret=0;
 
                 }
@@ -348,6 +347,7 @@ int consultaFacturacionPorCuit(Publicidad *listPub,int lenPub,Pantalla *listPan,
 {
     char auxCuit[20];
     int ret = -1;
+    int i;
     int auxPos;
     float auxPrecio;
     float auxCantDia;
@@ -356,18 +356,52 @@ int consultaFacturacionPorCuit(Publicidad *listPub,int lenPub,Pantalla *listPan,
     {
         if(utn_getValidStringNumerico("Ingrese Cuit:","\nError.","Error, excediste el maximo de caracteres",auxCuit,20,2)==0)
         {
-            if(pub_buscarPublicidadPorCuit(listPub,lenPub,auxCuit,&auxPos)==-1)
+            for(i=0;i<lenPub;i++)
             {
-                printf("\nNo se encontro el Cuit");
+                if(listPub[i].isEmpty==OCUPADO && listPan[i].isEmpty==OCUPADO)
+                {
+                    if(strncmp(listPub[i].cuit,auxCuit,20)==0)
+                    {
+                        if(pub_buscarPublicidadPorCuit(listPub,lenPub,auxCuit,&auxPos)!=-1)
+                        {
+                            auxCantDia=listPub[auxPos].cantidadDeDia;
+                            auxPrecio=listPan[auxPos].precio;
+                            importe=auxCantDia*auxPrecio;
+
+                        }
+                    }
+                }
             }
-            else
+            ret = 0;
+        }
+    }
+    return ret;
+}
+
+int pub_ordenarCuit(Publicidad *listPub,int lenPub)
+{
+    int ret=-1;
+    int i;
+    int j;
+    Publicidad aux;
+    if(listPub!=NULL && lenPub>0)
+    {
+        for(i=0; i<lenPub-1; i++)
+        {
+            if(listPub[i].isEmpty==OCUPADO)
             {
-                auxCantDia=listPub[auxPos].cantidadDeDia;
-                auxPrecio=listPan[auxPos].precio;
-                importe=auxCantDia*auxPrecio;
-                printf("\nImporte a pagar: %.2f",importe);
-                ret = 0;
+                for(j=i+1; j<lenPub; j++)
+                {
+                    if(listPub[i].cuit>listPub[j].cuit)
+                    {
+                        aux=listPub[i];
+                        listPub[i]=listPub[j];
+                        listPub[j]=aux;
+                        ret=0;
+                    }
+                }
             }
+
         }
     }
     return ret;
@@ -377,37 +411,32 @@ int pub_printfContrataciones(Publicidad *listPub,int lenPub,Pantalla *listPan,in
 {
     int ret=-1;
     int i;
-    float auxCantDia;
-    float auxPrecio;
-    float importe;
-    int auxIdPan;
-    if(listPub!=NULL && lenPub>0)
+    if(listPub!=NULL && lenPub>0 && listPan!=NULL && lenPan>0)
     {
-        for(i=0; i<lenPub; i++)
+        for(i=0;i<lenPub;i++)
         {
-            if(listPub[i].isEmpty==OCUPADO)
+            if(pub_ordenarCuit(listPub,lenPub)==0)
             {
-                if(listPan[i].isEmpty==OCUPADO)
-                {
-                    auxCantDia=listPub[i].cantidadDeDia;
-                    auxPrecio=listPan[i].precio;
-                    auxIdPan=listPub[i].idPan;
-                    importe=auxCantDia*auxPrecio;
-                    printf("\nId Publicidad: %d",listPub[i].idPub);
-                    pan_printfPantallaPorId(listPan,lenPan,auxIdPan);
-                    printf("\nNombre: %s",listPub[i].nombreArch);
-                    printf("\nCuit: %s",listPub[i].cuit);
-                    printf("\nCantidad de dias: %d",listPub[i].cantidadDeDia);
-                    printf("\nImporte a pagar: %.2f",importe);
-                    printf("\n------------------------\n");
-                    ret=0;
-                }
+                printf("cuit: %s",listPub[i].cuit);
+                ret=0;
             }
+
         }
     }
     return ret;
 }
-
+/* auxCantDia=listPub[i].cantidadDeDia;
+        auxPrecio=listPan[i].precio;
+        auxIdPan=listPub[i].idPan;
+        importe=auxCantDia*auxPrecio;
+        printf("\nId Publicidad: %d",listPub[i].idPub);
+        pan_printfPantallaPorId(listPan,lenPan,auxIdPan);
+        printf("\nNombre: %s",listPub[i].nombreArch);
+        printf("\nCuit: %s",listPub[i].cuit);
+        printf("\nCantidad de dias: %d",listPub[i].cantidadDeDia);
+        printf("\nImporte a pagar: %.2f",importe);
+        printf("\n------------------------\n");
+        ret=0;*/
 int clienteConImporteMasAlto(Publicidad *listPub,int lenPub,Pantalla *listPan,int lenPan)
 {
     int ret = -1;

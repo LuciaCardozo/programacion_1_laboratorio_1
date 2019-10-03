@@ -6,7 +6,6 @@
 #define LIBRE 0
 #define OCUPADO 1
 
-static int generarId(void);
 
 int pan_initPantalla(Pantalla *listPan,int lenPan)
 {
@@ -260,7 +259,7 @@ int pan_modificarPantalla(Pantalla *listPan, int lenPan,int id)
 }
 
 
-static int generarId(void)
+ int generarId(void)
 {
     static int idMax=1;
     return idMax++;

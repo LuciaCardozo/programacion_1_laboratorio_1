@@ -25,6 +25,7 @@ int pub_buscarPublicidadPorCuit(Publicidad *listPub,int lenPub,char *cuit,int *p
 int pub_printfPublicidadPorCuit(Publicidad *listPub,int lenPub,char *cuit);
 int pub_bajaPublicidadPorCuit(Publicidad *listPub,int lenPub);
 int consultaFacturacionPorCuit(Publicidad *listPub,int lenPub,Pantalla *listPan,int lenPan);
+int pub_ordenarCuit(Publicidad *listPub,int lenPub);
 int pub_printfContrataciones(Publicidad *listPub,int lenPub,Pantalla *listPan,int lenPan);
 int clienteConImporteMasAlto(Publicidad *listPub,int lenPub,Pantalla *listPan,int lenPan);
 

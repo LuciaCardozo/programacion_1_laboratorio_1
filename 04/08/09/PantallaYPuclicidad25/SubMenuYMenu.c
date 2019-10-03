@@ -11,6 +11,10 @@ int menu(Pantalla *listPan,int lenPan,Publicidad *listPub,int lenPub)
     /*menu(listPersonas,CANT);*/
     pan_initPantalla(listPan,lenPan);
     pub_initPublicidad(listPub,lenPub);
+    pan_addPantalla(listPan,lenPan,1,"lg","mitre",45,1);
+    pan_addPantalla(listPan,lenPan,2,"sony","corrientes",25,2);
+    pub_addPublicidad(listPub,lenPub,1,2,10,"200","lucia");
+    pub_addPublicidad(listPub,lenPub,2,1,10,"200","lucia");
     int opciones;
     int auxId;
     int auxPos;
