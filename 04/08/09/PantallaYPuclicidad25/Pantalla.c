@@ -259,6 +259,7 @@ int pan_modificarPantalla(Pantalla *listPan, int lenPan,int id)
 }
 
 
+
  int generarId(void)
 {
     static int idMax=1;

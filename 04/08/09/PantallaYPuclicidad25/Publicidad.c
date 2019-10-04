@@ -343,7 +343,7 @@ int pub_modificarPublicacion(Publicidad *listPub, int lenPub,int id)
     return ret;
 }
 
-int consultaFacturacionPorCuit(Publicidad *listPub,int lenPub,Pantalla *listPan,int lenPan)
+/*int consultaFacturacionPorCuit(Publicidad *listPub,int lenPub,Pantalla *listPan,int lenPan)
 {
     char auxCuit[20];
     int ret = -1;
@@ -368,6 +368,7 @@ int consultaFacturacionPorCuit(Publicidad *listPub,int lenPub,Pantalla *listPan,
                             auxPrecio=listPan[auxPos].precio;
                             importe=auxCantDia*auxPrecio;
 
+
                         }
                     }
                 }
@@ -376,7 +377,7 @@ int consultaFacturacionPorCuit(Publicidad *listPub,int lenPub,Pantalla *listPan,
         }
     }
     return ret;
-}
+}*/
 
 int pub_ordenarCuit(Publicidad *listPub,int lenPub)
 {
@@ -420,7 +421,6 @@ int pub_printfContrataciones(Publicidad *listPub,int lenPub,Pantalla *listPan,in
                 printf("cuit: %s",listPub[i].cuit);
                 ret=0;
             }
-
         }
     }
     return ret;
@@ -444,7 +444,7 @@ int clienteConImporteMasAlto(Publicidad *listPub,int lenPub,Pantalla *listPan,in
     float mayorImporte=0;
     float auxCantDia;
     float auxPrecio;
-    float importe;
+    float importe=0;
     int auxIdPan;
     if(listPub!=NULL && lenPub>0)
     {
@@ -475,6 +475,93 @@ int clienteConImporteMasAlto(Publicidad *listPub,int lenPub,Pantalla *listPan,in
                         }
                     }
                 }
+            }
+        }
+    }
+    return ret;
+}
+
+int pub_calcularFacturacion(Pantalla *listPan,int lenPan,Publicidad *listPub,int lenPub,char *cuit,int *contadorPub)
+{
+    int ret = -1;
+    int i;
+    float total=0;
+    int posPan;
+    int aux = 0;
+    if(listPan!=NULL && lenPub > 0)
+    {
+        for(i=0;i<lenPub;i++)
+        {
+            if(listPub[i].isEmpty==OCUPADO && listPan[i].isEmpty==OCUPADO)
+            {
+                if(strcmp(cuit,listPub[i].cuit)==0)
+                {
+                    aux++;
+                    pan_buscarPantallaPorId(listPan,lenPan,listPub[i].idPan,&posPan);
+                    total=listPub[i].cantidadDeDia*listPan[posPan].precio;
+                    printf("\nPublicacion: %d\nPantalla: %s\nDireccion: %s\nPrecio: %.2f\nCantidad de dia: %d\nTotal a abonar: %.2f\n"
+                            ,listPub[i].idPub,listPan[posPan].nombre,listPan[posPan].direccion,listPan[posPan].precio,
+                            listPub[i].cantidadDeDia,total);
+                            ret=0;
+                }
+            }
+        }
+    *contadorPub = aux;
+    }
+    return ret;
+}
+
+int pub_facturacionPorCuit(Publicidad *listPub,int lenPub,Pantalla *listPan,int lenPan)
+{
+    int i;
+    int ret=-1;
+    char auxCuit[20];
+    int auxPos;
+    int aux;
+    if(listPub!=NULL && lenPub>0)
+    {
+        for(i=0;i<lenPub;i++)
+        {
+            if(listPub[i].isEmpty==OCUPADO && listPan[i].isEmpty==OCUPADO)
+            {
+                if(utn_getValidStringNumerico("\nIngrese cuit: ","\nError","\nError, excediste el maximo de caracteres",auxCuit,12,2)==0)
+                {
+                    if(pub_buscarPublicidadPorCuit(listPub,lenPub,auxCuit,&auxPos)==-1)
+                    {
+                        printf("Error, no existe cuit");
+                    }
+                    else
+                    {
+                        pub_calcularFacturacion(listPan,lenPan,listPub,lenPub,auxCuit,&aux);
+                        printf("%s.....%d",auxCuit,aux);
+                        break;
+                    }
+                }
+            }
+        }
+        ret=0;
+    }
+    return ret;
+}
+
+int pub_facturacionesDeClientes(Publicidad *listPub,int lenPub,Pantalla *listPan,int lenPan)
+{
+    int i;
+    int ret=-1;
+    int aux;
+    if(listPub!=NULL && lenPub>0)
+    {
+        for(i=0;i<lenPub;i++)
+        {
+            if(listPub[i].isEmpty==OCUPADO && listPan[i].isEmpty==OCUPADO)
+            {
+                pub_ordenarCuit(listPub,lenPub);
+
+
+                    printf("\nNombre del cliente: %s\n",listPub[i].nombreArch);
+                    pub_calcularFacturacion(listPan,lenPan,listPub,lenPub,listPub[i].cuit,&aux);
+                    ret=0;
+
             }
         }
     }

@@ -13,8 +13,12 @@ int menu(Pantalla *listPan,int lenPan,Publicidad *listPub,int lenPub)
     pub_initPublicidad(listPub,lenPub);
     pan_addPantalla(listPan,lenPan,1,"lg","mitre",45,1);
     pan_addPantalla(listPan,lenPan,2,"sony","corrientes",25,2);
-    pub_addPublicidad(listPub,lenPub,1,2,10,"200","lucia");
-    pub_addPublicidad(listPub,lenPub,2,1,10,"200","lucia");
+    pan_addPantalla(listPan,lenPan,3,"samsung","santafe",15,2);
+    pan_addPantalla(listPan,lenPan,4,"sanyo","belgrano",30,1);
+    pub_addPublicidad(listPub,lenPub,1,2,10,"205","lucia");
+    pub_addPublicidad(listPub,lenPub,2,1,10,"205","lucia");
+    pub_addPublicidad(listPub,lenPub,3,3,5,"200","jona");
+    pub_addPublicidad(listPub,lenPub,4,4,10,"203","jona");
     int opciones;
     int auxId;
     int auxPos;
@@ -100,14 +104,15 @@ int menu(Pantalla *listPan,int lenPan,Publicidad *listPub,int lenPub)
                 }
                 break;
             case 7:
-                if(consultaFacturacionPorCuit(listPub,lenPub,listPan,lenPan)!=-1)
+                if(pub_facturacionPorCuit(listPub,lenPub,listPan,lenPan)==0)
                 {
-                    printf("\nFacturaciones Totales");
+                    printf("\nFACTURACION TOTAL");
                 }
                 else
                 {
-                    printf("Error");
+                    printf("\nNO HAY FACTURACION");
                 }
+
                 break;
             case 8:
                 if(pub_printfPublicidad(listPub,lenPub,listPan,lenPan)==0)
@@ -130,7 +135,14 @@ int menu(Pantalla *listPan,int lenPan,Publicidad *listPub,int lenPub)
                 }
                 break;
             case 10:
-                pub_printfContrataciones(listPub,lenPub,listPan,lenPan);
+                if(pub_facturacionesDeClientes(listPub,lenPub,listPan,lenPan)==0)
+                {
+                    printf("\nTodos los clientes ok");
+                }
+                else
+                {
+                    printf("\nError.10.");
+                }
                 break;
             case 11:
                 /*clienteConImporteMasAlto(listPub,lenPub,listPan,lenPan);Falta terminar*/
