@@ -1,0 +1,58 @@
+# depslib dependency file v1.0
+1570286591 source:/home/alumno/programacion_1_laboratorio_1/04/08/PracticaDeParcial_05/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"Orquesta.h"
+	"Musico.h"
+	"Instrumento.h"
+	"subMenu.h"
+
+1568463233 /home/alumno/programacion_1_laboratorio_1/04/08/PracticaDeParcial_05/utn.h
+
+1570282940 /home/alumno/programacion_1_laboratorio_1/04/08/PracticaDeParcial_05/Orquesta.h
+
+1570286558 /home/alumno/programacion_1_laboratorio_1/04/08/PracticaDeParcial_05/subMenu.h
+
+1570281567 source:/home/alumno/programacion_1_laboratorio_1/04/08/PracticaDeParcial_05/Orquesta.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"Orquesta.h"
+
+1570287071 source:/home/alumno/programacion_1_laboratorio_1/04/08/PracticaDeParcial_05/subMenu.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"Orquesta.h"
+	"Musico.h"
+	"Instrumento.h"
+
+1568843577 source:/home/alumno/programacion_1_laboratorio_1/04/08/PracticaDeParcial_05/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1570284630 source:/home/alumno/programacion_1_laboratorio_1/04/08/PracticaDeParcial_05/Musico.c
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	"utn.h"
+	"Musico.h"
+
+1570283759 /home/alumno/programacion_1_laboratorio_1/04/08/PracticaDeParcial_05/Musico.h
+
+1570286743 source:/home/alumno/programacion_1_laboratorio_1/04/08/PracticaDeParcial_05/Instrumento.c
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	"Instrumento.h"
+	"utn.h"
+
+1570286188 /home/alumno/programacion_1_laboratorio_1/04/08/PracticaDeParcial_05/Instrumento.h
+
