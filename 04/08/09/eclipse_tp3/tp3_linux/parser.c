@@ -12,7 +12,16 @@
  */
 int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 {
+	int ret=-1;
+	char aux[4][51];
+	if(pFile!=NULL && pArrayListEmployee!=NULL)
+	{
+		while(!feof(pFile))
+		{
+			fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",*(aux),*(aux+1),*(aux+2),*(aux+3));
 
+		}
+	}
     return 1;
 }
 

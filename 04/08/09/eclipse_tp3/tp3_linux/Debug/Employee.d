@@ -1,1 +1,3 @@
-Employee.o: ../Employee.c
+Employee.o: ../Employee.c ../Employee.h
+
+../Employee.h:

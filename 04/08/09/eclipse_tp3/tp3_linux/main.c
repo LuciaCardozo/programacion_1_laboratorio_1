@@ -3,6 +3,7 @@
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
+#include "utn.h"
 
 /****************************************************
     Menu:
@@ -40,20 +41,26 @@ int main()
 }*/
 
 
-
 int main()
 {
     int option = 0;
 
     LinkedList* listaEmpleados = ll_newLinkedList();
     do{
-        switch(option)
-        {
-            case 1:
-                controller_loadFromText("data.csv",listaEmpleados);
-                break;
-        }
-    }while(option != 10);
+    	if(utn_getValidInt("\n1-Cargar datos(texto)\n2-Cargar datos(Binario)\n3-Salir\nIngrese: ","\nError",&option,1,3,2)==0)
+    	{
+			switch(option)
+			{
+				case 1:
+					controller_loadFromText("data.csv",listaEmpleados);
+					break;
+				case 2:
+					controller_loadFromBinary("data.csv",listaEmpleados);
+					break;
+				case 3:
+					break;
+			}
+		}
+       }while(option != 3);
     return 0;
-
-
+}

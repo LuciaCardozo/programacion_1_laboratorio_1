@@ -13,16 +13,31 @@
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 {
-	FILE *pFile;
-	int r;
-	pFile = fopen("data.csv","r");
-	if(pFile == NULL)
+	int ret;
+	if(path != NULL && pArrayListEmployee!=NULL)
 	{
-		printf("El archivo no existe");
-		exit(EXIT_FAILURE);
+		FILE *pFile=NULL;
+		pFile = fopen(path,"r");
+		if(pFile!=NULL)
+		{
+			printf("Abri el archivo");
+			ret=0;
+		}
+		else
+		{
+				printf("El archivo no existe");
+				ret = -1;
+		}
+		if((fclose(pFile))==-1)
+		{
+			printf("El archivo no se cerro");
+		}
+		else
+		{
+			printf("El archivo fue cerrado exitosamente");
+		}
 	}
-	fclose(pFile);
-    return 1;
+    return ret;
 }
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo binario).
@@ -34,8 +49,33 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+	int ret;
+	if(path != NULL && pArrayListEmployee!=NULL)
+	{
+		FILE *pFile=NULL;
+		pFile = fopen(path,"rb");
+		if(pFile!=NULL)
+		{
+			printf("\nAbri el archivo");
+			ret=0;
+		}
+		else
+		{
+				printf("\nEl archivo no existe");
+				ret = -1;
+		}
+		if((fclose(pFile))==-1)
+		{
+			printf("\nEl archivo no se cerro");
+		}
+		else
+		{
+			printf("\nEl archivo fue cerrado exitosamente");
+		}
+	}
+    return ret;
 }
+
 
 /** \brief Alta de empleados
  *
