@@ -100,7 +100,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     char auxHoras[5];
     char auxSueldo[10];
     int auxId;
-    char auxIdStr[10];
+    char auxIdStr[20];
     if(pArrayListEmployee!=NULL)
     {
         if(utn_getValidName(auxNombre)==0 &&
@@ -362,4 +362,3 @@ int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
 {
     return 1;
 }
-

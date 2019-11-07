@@ -28,4 +28,4 @@ void menu(int *opcion);
 int generarId(void);
 void employe_idInit(int id);
 
-#endif // employee_H_INCLUDED
+#endif /* employee_H_INCLUDED*/
