@@ -44,23 +44,57 @@ int main()
 int main()
 {
     int option = 0;
-
     LinkedList* listaEmpleados = ll_newLinkedList();
     do{
-    	if(utn_getValidInt("\n1-Cargar datos(texto)\n2-Cargar datos(Binario)\n3-Salir\nIngrese: ","\nError",&option,1,3,2)==0)
-    	{
-			switch(option)
-			{
-				case 1:
-					controller_loadFromText("data.csv",listaEmpleados);
-					break;
-				case 2:
-					controller_loadFromBinary("data.csv",listaEmpleados);
-					break;
-				case 3:
-					break;
-			}
-		}
-       }while(option != 3);
+        menu(&option);
+        switch(option)
+        {
+            case 1:
+                if(controller_loadFromText("data.csv",listaEmpleados))
+                {
+                    printf("\nSe abrio: %d Archivos\n",controller_loadFromText("data.csv",listaEmpleados));
+                    controller_lastIdEmployee(listaEmpleados);
+                }
+                else
+                {
+                    printf("\nError, no se puedo cargar los datos\n");
+                }
+                break;
+            case 2:
+                if(!controller_loadFromBinary("data.bin",listaEmpleados))
+                {
+                    printf("\nSe abrio: %d Archivos\n",controller_loadFromText("data.bin",listaEmpleados));
+                }
+                else
+                {
+                    printf("\nError, no se puedo cargar los datos\n");
+                }
+                break;
+            case 3:
+                controller_addEmployee(listaEmpleados);
+                break;
+            case 4:
+                controller_editEmployee(listaEmpleados);
+                break;
+            case 5:
+                controller_removeEmployee(listaEmpleados);
+                break;
+            case 6:
+                controller_ListEmployee(listaEmpleados);
+                break;
+            case 7:
+                break;
+            case 8:
+                printf("\nSe cargo: %d Archivos\n",controller_saveAsText("data.csv",listaEmpleados));
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            default:
+            	printf("\nError, opcion incorrecta");
+            	break;
+        }
+    }while(option != 10);
     return 0;
 }

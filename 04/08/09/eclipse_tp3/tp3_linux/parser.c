@@ -12,31 +12,39 @@
  */
 int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 {
-	char aux[4][51];
-	int ret=-1;
-	if(pFile!=NULL && pArrayListEmployee!=NULL)
+    Employee* pEmp;
+	char aux[4][128];
+	int ret = 0;
+	//int len;
+	if(pFile != NULL && pArrayListEmployee != NULL)
 	{
+        fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",*(aux),*(aux+1),*(aux+2),*(aux+3));
 		while(!feof(pFile))
 		{
-			Employee* anEmployee=NULL;
-			fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",*(aux),*(aux+1),*(aux+2),*(aux+3));
-			anEmployee=employee_newParametros(*(aux),*(aux+1),*(aux+2),*(aux+3));
-			if(anEmployee==0)
+		    fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",*(aux),*(aux+1),*(aux+2),*(aux+3));
+		    //len=ll_len(pEmp);
+			//printf("\n%d",len);
+
+			pEmp = employee_newParametros(*(aux),*(aux+1),*(aux+2),*(aux+3));
+			if(pEmp != NULL)
 			{
-				printf("\n%s----%s----%s----%s",*(aux),*(aux+1),*(aux+2),*(aux+3));
-				ll_add(pArrayListEmployee,anEmployee);
+				if(!ll_add(pArrayListEmployee,pEmp))
+                {
+                    //printf("\n%s----%s----%s----%s",*(aux),*(aux+1),*(aux+2),*(aux+3));
+                    ret++;
+                }
 			}
 			else
 			{
+			    employee_delete(pEmp);
 				printf("\nError, no se cargaron los datos");
 			}
-		ret=0;
 		}
 	}
     return ret;
 }
 
-/** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo binario).
+/** \brief Parsea los datos los datos de los empleados desde el archivo databin.csv (modo binario).
  *
  * \param path char*
  * \param pArrayListEmployee LinkedList*
@@ -45,6 +53,30 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
  */
 int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
 {
-
-    return 1;
+    Employee *pEmp;
+    int ret= 0;
+    if(pFile!=NULL && pArrayListEmployee!=NULL)
+    {
+        do
+        {
+            pEmp = employee_new();
+            if(pEmp != NULL)
+            {
+                if(fread(pEmp,sizeof(Employee),1,pFile))
+                {
+                    if(!ll_add(pArrayListEmployee,pEmp))
+                    {
+                        ret++;
+                    }
+                }
+                else
+                {
+                    employee_delete(pEmp);
+                    printf("\nError, no se cargaron los datos");
+                }
+            }
+        }
+        while(!feof(pFile));
+    }
+    return ret;
 }
