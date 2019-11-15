@@ -39,8 +39,8 @@ int main(void)
 	//startTesting(11); // ll_indexOf 100%
 	//startTesting(12); // ll_isEmpty 100%
 	//startTesting(13); // ll_push 100%
-	startTesting(14); // ll_pop
-	//startTesting(15); // ll_contains
+	//startTesting(14); // ll_pop 100%
+	startTesting(15); // ll_contains
 	/*startTesting(16); // ll_containsAll
 	startTesting(17); // ll_subList
 	startTesting(18); // ll_clone
