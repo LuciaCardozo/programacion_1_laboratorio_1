@@ -1,0 +1,48 @@
+# depslib dependency file v1.0
+1574384624 source:/home/alumno/programacion_1_laboratorio_1/04/08/09/SegundoParcial21_11/cachorros.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"cachorros.h"
+	"linkedList.h"
+	"utn.h"
+
+1574384624 /home/alumno/programacion_1_laboratorio_1/04/08/09/SegundoParcial21_11/cachorros.h
+	"linkedList.h"
+
+1574377568 /home/alumno/programacion_1_laboratorio_1/04/08/09/SegundoParcial21_11/linkedList.h
+
+1574371992 /home/alumno/programacion_1_laboratorio_1/04/08/09/SegundoParcial21_11/utn.h
+
+1574383697 source:/home/alumno/programacion_1_laboratorio_1/04/08/09/SegundoParcial21_11/linkedList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"linkedList.h"
+	"cachorros.h"
+
+1574384889 source:/home/alumno/programacion_1_laboratorio_1/04/08/09/SegundoParcial21_11/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"linkedList.h"
+	"parser.h"
+	"cachorros.h"
+	"utn.h"
+
+1574375391 /home/alumno/programacion_1_laboratorio_1/04/08/09/SegundoParcial21_11/parser.h
+
+1574382903 source:/home/alumno/programacion_1_laboratorio_1/04/08/09/SegundoParcial21_11/parser.c
+	"linkedList.h"
+	"cachorros.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+
+1574371992 source:/home/alumno/programacion_1_laboratorio_1/04/08/09/SegundoParcial21_11/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
